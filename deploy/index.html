@@ -1,1223 +1,2213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Farcaster Manifesto — The People Who Stayed</title>
-
-<!-- Open Graph -->
-<meta property="og:title" content="Farcaster Manifesto — The People Who Stayed" />
-<meta property="og:description" content="A community manifesto for Farcaster. The truth, the survival, and the case for shared ownership." />
-<meta property="og:image" content="https://farcaster.lat/images/og.png" />
-<meta property="og:url" content="https://farcaster.lat" />
-<meta property="og:type" content="website" />
-
-<!-- Farcaster Mini App Embed -->
-<meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://farcaster.lat/images/embed.png","button":{"title":"Read the Manifesto","action":{"type":"launch_miniapp","name":"Farcaster Manifesto","url":"https://farcaster.lat","splashImageUrl":"https://farcaster.lat/images/splash.png","splashBackgroundColor":"#7D65C1"}}}' />
-
-<!-- Preconnect for Quick Auth -->
-<link rel="preconnect" href="https://auth.farcaster.xyz" />
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --purple: #7D65C1;
-  --purple-deep: #3d2e6e;
-  --purple-dark: #1a1233;
-  --purple-abyss: #110d22;
-  --purple-mid: #6550a8;
-  --purple-light: #9b85d6;
-  --purple-glow: #c4b3e8;
-  --purple-faint: rgba(125,101,193,0.18);
-  --purple-ghost: rgba(125,101,193,0.06);
-  --white: #ffffff;
-  --w95: rgba(255,255,255,0.95);
-  --w80: rgba(255,255,255,0.80);
-  --w65: rgba(255,255,255,0.65);
-  --w50: rgba(255,255,255,0.50);
-  --w30: rgba(255,255,255,0.30);
-  --w15: rgba(255,255,255,0.15);
-  --w08: rgba(255,255,255,0.08);
-  --w04: rgba(255,255,255,0.04);
-  --gold: #f0c050;
-  --gold-soft: rgba(240,192,80,0.8);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-::selection { background: var(--purple-light); color: var(--purple-abyss); }
-
-html {
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--purple-mid) var(--purple-dark);
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--purple);
-  color: var(--w80);
-  line-height: 1.8;
-  overflow-x: hidden;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ═══ BG ═══ */
-.bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(100,80,168,0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 85% 75%, rgba(61,46,110,0.5) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 50% at 10% 40%, rgba(155,133,214,0.06) 0%, transparent 50%),
-    var(--purple);
-}
-
-.bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  opacity: 0.5;
-}
-
-/* ═══ NAV ═══ */
-nav {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 100;
-  padding: 1.1rem 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.4s ease;
-}
-
-nav.scrolled {
-  background: rgba(26,18,51,0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--w08);
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  text-decoration: none;
-}
-
-.nav-logo img { height: 26px; width: auto; }
-
-.nav-logo span {
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: var(--white);
-  letter-spacing: -0.01em;
-}
-
-.nav-links { display: flex; gap: 1.8rem; list-style: none; }
-
-.nav-links a {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--w50);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover { color: var(--white); }
-
-/* ═══ HERO ═══ */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 8rem 2rem 6rem;
-  z-index: 1;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 18%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 480px; height: 480px;
-  background: radial-gradient(circle, rgba(155,133,214,0.12) 0%, transparent 65%);
-  border-radius: 50%;
-  animation: breathe 10s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.5; }
-  50% { transform: translate(-50%,-50%) scale(1.18); opacity: 1; }
-}
-
-.hero-logo {
-  width: 84px; height: 84px;
-  margin-bottom: 2.5rem;
-  animation: float 7s ease-in-out infinite;
-  filter: brightness(1.15);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-9px); }
-}
-
-.hero-badge {
-  display: inline-block;
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--w65);
-  background: var(--w08);
-  border: 1px solid var(--w15);
-  padding: 0.4rem 1.1rem;
-  border-radius: 100px;
-  margin-bottom: 2.2rem;
-}
-
-.hero h1 {
-  font-weight: 300;
-  font-size: clamp(2.6rem, 7vw, 5rem);
-  line-height: 1.1;
-  color: var(--white);
-  margin-bottom: 1.6rem;
-  max-width: 780px;
-  letter-spacing: -0.03em;
-}
-
-.hero h1 strong { font-weight: 800; }
-
-.hero-sub {
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: var(--w65);
-  max-width: 500px;
-  line-height: 1.8;
-  margin-bottom: 3rem;
-}
-
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.8rem;
-  background: var(--white);
-  color: var(--purple);
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.3s;
-}
-
-.hero-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-}
-
-.scroll-hint {
-  position: absolute;
-  bottom: 2.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--w30);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  animation: pulse-d 2.5s ease-in-out infinite;
-}
-
-@keyframes pulse-d {
-  0%,100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
-  50% { opacity: 0.7; transform: translateX(-50%) translateY(5px); }
-}
-
-/* ═══ CONTENT ═══ */
-.content { position: relative; z-index: 1; }
-
-section { padding: 6rem 2rem; max-width: 720px; margin: 0 auto; }
-.section-wide { max-width: 1020px; }
-
-.divider {
-  width: 100%; max-width: 720px;
-  margin: 0 auto;
-  height: 1px;
-  background: var(--w08);
-}
-
-.ch { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--purple-glow); margin-bottom: 1rem; }
-
-h2 { font-weight: 300; font-size: clamp(1.9rem, 4.5vw, 2.8rem); color: var(--white); line-height: 1.2; margin-bottom: 1.8rem; letter-spacing: -0.025em; }
-h2 strong { font-weight: 800; }
-
-h3 { font-weight: 700; font-size: 1.15rem; color: var(--white); margin-top: 2.8rem; margin-bottom: 1rem; letter-spacing: -0.01em; }
-
-p { margin-bottom: 1.3rem; font-weight: 400; font-size: 0.98rem; }
-p.lead { font-size: 1.1rem; line-height: 1.9; color: var(--w95); font-weight: 300; }
-
-strong { color: var(--white); font-weight: 600; }
-em { font-style: italic; color: var(--w95); }
-
-a { color: var(--purple-glow); text-decoration: none; border-bottom: 1px solid rgba(196,179,232,0.3); transition: all 0.3s; }
-a:hover { color: var(--white); border-color: var(--w50); }
-
-code {
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  font-size: 0.83em;
-  color: var(--purple-glow);
-  background: var(--w08);
-  padding: 0.12em 0.4em;
-  border-radius: 3px;
-}
-
-/* ═══ VOICE BLOCKS ═══ */
-.voice {
-  position: relative;
-  padding: 2rem 0 2rem 2.2rem;
-  margin: 2.2rem 0;
-  border-left: 3px solid var(--purple-light);
-}
-
-.voice p { font-size: 1.05rem; line-height: 1.95; color: var(--white); font-weight: 300; font-style: italic; margin-bottom: 0.7rem; }
-.voice p:last-of-type { margin-bottom: 0; }
-.voice .sig { font-style: normal; font-size: 0.78rem; color: var(--w50); margin-top: 1rem; font-weight: 500; }
-
-/* RAW — personal testimony */
-.raw {
-  position: relative;
-  padding: 2.5rem;
-  margin: 2.5rem 0;
-  background: rgba(0,0,0,0.2);
-  border: 1px solid var(--w08);
-  border-radius: 12px;
-}
-
-.raw p { font-size: 0.95rem; line-height: 1.85; color: var(--w65); margin-bottom: 1.1rem; }
-.raw p:last-of-type { margin-bottom: 0; }
-.raw p strong { color: var(--white); }
-.raw .raw-sig { font-size: 0.78rem; color: var(--w30); margin-top: 1.8rem; font-weight: 500; }
-
-/* ═══ CARDS ═══ */
-.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1px;
-  margin: 2.2rem 0;
-  background: var(--w08);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.card { padding: 1.8rem 2rem; background: rgba(26,18,51,0.7); transition: background 0.3s; }
-.card:hover { background: rgba(50,38,90,0.7); }
-.card h4 { font-weight: 600; font-size: 0.95rem; color: var(--white); margin-bottom: 0.5rem; }
-.card p { font-size: 0.88rem; color: var(--w65); margin-bottom: 0; line-height: 1.7; }
-.card .meta { font-size: 0.73rem; color: var(--purple-glow); margin-top: 0.7rem; font-weight: 500; opacity: 0.7; }
-
-/* ═══ LAYERS ═══ */
-.layers {
-  margin: 2.5rem 0;
-  border: 1px solid var(--w08);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.layer {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.3rem;
-  padding: 1.5rem 1.8rem;
-  border-bottom: 1px solid var(--w04);
-  background: rgba(26,18,51,0.5);
-  transition: background 0.3s;
-}
-
-.layer:last-child { border-bottom: none; }
-.layer:hover { background: rgba(50,38,90,0.4); }
-.layer-tag { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple-glow); min-width: 72px; padding-top: 0.15rem; flex-shrink: 0; }
-.layer-body h4 { font-weight: 600; font-size: 0.95rem; color: var(--white); margin-bottom: 0.3rem; }
-.layer-body p { font-size: 0.85rem; color: var(--w50); margin: 0; line-height: 1.65; }
-
-/* ═══ PATHWAYS ═══ */
-.pathways {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 0.8rem;
-  margin: 2.2rem 0;
-}
-
-.pathway {
-  padding: 1.8rem;
-  background: rgba(26,18,51,0.6);
-  border: 1px solid var(--w08);
-  border-radius: 12px;
-  transition: all 0.3s;
-  display: block;
-  text-decoration: none;
-}
-
-.pathway:hover { transform: translateY(-2px); border-color: var(--w15); box-shadow: 0 14px 44px rgba(0,0,0,0.18); background: rgba(50,38,90,0.5); }
-.pathway-num { font-size: 2.2rem; font-weight: 200; color: var(--w15); line-height: 1; margin-bottom: 0.8rem; }
-.pathway h4 { font-weight: 600; font-size: 0.95rem; color: var(--white); margin-bottom: 0.6rem; }
-.pathway p { font-size: 0.85rem; color: var(--w50); line-height: 1.65; margin-bottom: 0.8rem; }
-.pathway .plink { font-size: 0.72rem; font-weight: 600; color: var(--purple-glow); border: none; letter-spacing: 0.02em; }
-
-/* ═══ GLOSSARY ═══ */
-.glossary {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1px;
-  background: var(--w08);
-  border-radius: 12px;
-  overflow: hidden;
-  margin: 2.2rem 0;
-}
-
-.g { padding: 1.3rem 1.5rem; background: rgba(26,18,51,0.7); }
-.g-term { font-weight: 600; font-size: 0.9rem; color: var(--white); margin-bottom: 0.3rem; }
-.g-def { font-size: 0.82rem; color: var(--w50); line-height: 1.6; margin: 0; }
-
-/* ═══ TECH NOTE ═══ */
-.tn {
-  font-size: 0.82rem;
-  color: var(--w50);
-  background: var(--w04);
-  border-left: 3px solid var(--purple-light);
-  padding: 1.1rem 1.3rem;
-  margin: 1.8rem 0;
-  border-radius: 0 8px 8px 0;
-  line-height: 1.7;
-}
-
-.tn strong { color: var(--purple-glow); }
-
-/* ═══ TOKENOMICS TABLE ═══ */
-.token-table {
-  width: 100%;
-  margin: 2rem 0;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-}
-
-.token-table th {
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--purple-glow);
-  padding: 0.8rem 1rem;
-  border-bottom: 1px solid var(--w15);
-}
-
-.token-table td {
-  padding: 1rem;
-  border-bottom: 1px solid var(--w04);
-  color: var(--w65);
-  vertical-align: top;
-  line-height: 1.6;
-}
-
-.token-table tr:hover td { background: var(--w04); }
-
-.token-table td:first-child { color: var(--white); font-weight: 600; white-space: nowrap; }
-.token-table td:nth-child(2) { color: var(--purple-glow); font-weight: 600; font-variant-numeric: tabular-nums; }
-
-/* TOKEN BAR VISUAL */
-.token-bar {
-  display: flex;
-  height: 32px;
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 2rem 0 0.8rem;
-  gap: 2px;
-}
-
-.token-bar > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: rgba(0,0,0,0.6);
-  transition: flex 0.4s;
-}
-
-.tb-retro { background: #c4b3e8; flex: 35; }
-.tb-build { background: #9b85d6; flex: 20; }
-.tb-dao { background: #7D65C1; flex: 20; color: rgba(255,255,255,0.7) !important; }
-.tb-liq { background: #6550a8; flex: 10; color: rgba(255,255,255,0.7) !important; }
-.tb-node { background: #3d2e6e; flex: 5; color: rgba(255,255,255,0.5) !important; }
-.tb-fut { background: #1a1233; flex: 10; color: rgba(255,255,255,0.4) !important; }
-
-.token-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  font-size: 0.72rem;
-  color: var(--w50);
-}
-
-.token-legend span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.token-legend span::before {
-  content: '';
-  display: inline-block;
-  width: 10px; height: 10px;
-  border-radius: 2px;
-}
-
-.tl-retro::before { background: #c4b3e8; }
-.tl-build::before { background: #9b85d6; }
-.tl-dao::before { background: #7D65C1; }
-.tl-liq::before { background: #6550a8; }
-.tl-node::before { background: #3d2e6e; }
-.tl-fut::before { background: #1a1233; }
-
-/* ═══ FOOTER ═══ */
-footer {
-  position: relative;
-  padding: 5rem 2rem 2.5rem;
-  text-align: center;
-  z-index: 1;
-}
-
-.footer-phrase { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 300; color: var(--white); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.5; }
-.footer-links { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-.footer-links a { font-size: 0.72rem; font-weight: 500; color: var(--w30); border: none; transition: color 0.3s; }
-.footer-links a:hover { color: var(--w65); }
-.footer-end { font-size: 0.68rem; color: var(--w15); letter-spacing: 0.04em; }
-
-/* ═══ ANIMATION ═══ */
-.fi { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fi.visible { opacity: 1; transform: translateY(0); }
-
-/* ═══ RESPONSIVE ═══ */
-/* ═══ MINIAPP SAFE AREA ═══ */
-.miniapp-wrapper {
-  padding-top: var(--safe-area-top, 0px);
-  padding-bottom: var(--safe-area-bottom, 0px);
-  padding-left: var(--safe-area-left, 0px);
-  padding-right: var(--safe-area-right, 0px);
-}
-
-/* ═══ SHARE CTA (miniapp only) ═══ */
-.share-cta {
-  display: none;
-  position: fixed;
-  bottom: calc(1.5rem + var(--safe-area-bottom, 0px));
-  right: 1.5rem;
-  z-index: 99;
-  padding: 0.75rem 1.4rem;
-  background: var(--white);
-  color: var(--purple);
-  font-size: 0.78rem;
-  font-weight: 600;
-  border-radius: 100px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  transition: all 0.3s;
-}
-
-.share-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
-}
-
-.miniapp-mode .share-cta { display: flex; align-items: center; gap: 0.4rem; }
-
-/* ═══ ADD APP BANNER ═══ */
-.add-app-banner {
-  display: none;
-  position: fixed;
-  bottom: calc(4.5rem + var(--safe-area-bottom, 0px));
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 99;
-  padding: 0.7rem 1.6rem;
-  background: rgba(26,18,51,0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--w15);
-  border-radius: 12px;
-  color: var(--white);
-  font-size: 0.78rem;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  transition: all 0.3s;
-}
-
-.add-app-banner:hover {
-  border-color: var(--purple-light);
-  transform: translateX(-50%) translateY(-2px);
-}
-
-.miniapp-mode .add-app-banner.show { display: block; }
-
-@media (max-width: 768px) {
-  nav { padding: 0.9rem 1.2rem; }
-  .nav-links { display: none; }
-  section { padding: 4rem 1.4rem; }
-  .voice { padding-left: 1.3rem; }
-  .raw { padding: 1.8rem 1.3rem; }
-  .layer { flex-direction: column; gap: 0.3rem; }
-  .layer-tag { min-width: auto; }
-  .token-table { font-size: 0.8rem; }
-  .token-table td, .token-table th { padding: 0.7rem 0.6rem; }
-  .token-bar > div { font-size: 0; }
-}
-
-/* ═══ MINIAPP VIEWPORT ═══ */
-@media (max-width: 440px) {
-  .hero { min-height: auto; padding: 5rem 1.2rem 3rem; }
-  .hero-logo { width: 60px; height: 60px; margin-bottom: 1.5rem; }
-  .hero h1 { font-size: 2rem; }
-  .hero-sub { font-size: 0.95rem; margin-bottom: 2rem; }
-  .hero-badge { font-size: 0.62rem; margin-bottom: 1.5rem; }
-  .scroll-hint { display: none; }
-  section { padding: 3rem 1.2rem; }
-  h2 { font-size: 1.6rem; }
-  .pathways { grid-template-columns: 1fr; }
-  .glossary { grid-template-columns: 1fr; }
-  .footer-phrase { font-size: 1.2rem; }
-}
-</style>
-</head>
-<body>
-
-<div class="bg"></div>
-
-<div class="miniapp-wrapper" id="miniapp-wrapper">
-
-<nav id="nav">
-  <a href="#" class="nav-logo">
-    <img src="https://images.seeklogo.com/logo-png/62/1/farcaster-logo-png_seeklogo-622623.png" alt="Farcaster">
-    <span>Farcaster</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#truth">The Truth</a></li>
-    <li><a href="#stayed">We Stayed</a></li>
-    <li><a href="#fid">The FID</a></li>
-    <li><a href="#build">Build</a></li>
-    <li><a href="#token">$FARCASTER</a></li>
-  </ul>
-</nav>
-
-<!-- ═══════════ HERO ═══════════ -->
-
-<header class="hero">
-  <img src="https://images.seeklogo.com/logo-png/62/1/farcaster-logo-png_seeklogo-622623.png" alt="Farcaster" class="hero-logo">
-  <div class="hero-badge">A document for the people who stayed</div>
-  <h1>The protocol is <strong>ours now.</strong></h1>
-  <p class="hero-sub">This is not a product manual. It's the truth about what Farcaster is, what happened to it, and why the most important chapter is the one we write together.</p>
-  <a href="#truth" class="hero-cta">Read the story ↓</a>
-  <div class="scroll-hint">↓</div>
-</header>
-
-<div class="content">
-
-<!-- ═══════════ PART I — WHAT IS THIS ═══════════ -->
-
-<div class="divider"></div>
-
-<section>
-  <div class="fi">
-    <div class="ch">Part I</div>
-    <h2>For anyone arriving for the first time: <strong>what is this place?</strong></h2>
-  </div>
-
-  <div class="fi">
-    <p class="lead">Farcaster is a protocol for social communication. Not a company. Not an app. A <strong>protocol</strong> — an open set of rules that anyone can build on and no one can own.</p>
-  </div>
-
-  <div class="fi">
-    <p>Think of email. No company owns email. Gmail is a client. Outlook is a client. The protocol underneath — SMTP — belongs to everyone. If Gmail disappears tomorrow, your ability to send email doesn't disappear with it.</p>
-    <p>Farcaster is that, but for social media. <strong>Warpcast</strong> is the main client — the app most people use. But the protocol doesn't need it to survive. The social graph, the messages, the identities — they live on an open, decentralized network that no single entity controls.</p>
-    <p>When you create a Farcaster account, you are minting a permanent identity on a blockchain. Your posts are signed by your cryptographic keys and broadcast to a network of independent nodes. Your followers, your reputation, your history — they belong to <strong>you</strong>.</p>
-    <p>That is the promise. And to understand why it matters so much, you need to know what happened here.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════ PART II — THE TRUTH ═══════════ -->
-
-<section id="truth">
-  <div class="fi">
-    <div class="ch">Part II</div>
-    <h2>What happened. <strong>The truth.</strong></h2>
-  </div>
-
-  <div class="fi">
-    <p class="lead">There is a clean version of this story. Founder builds protocol, protocol grows, founder steps back. That version is a lie.</p>
-  </div>
-
-  <div class="fi">
-    <p>For over two years, thousands of people poured their energy, creativity, time, and belief into this protocol. Developers built hundreds of Mini Apps, bots, and novel systems. Artists created. Writers wrote. Communities formed. People made <em>friends</em>. Real ones — the kind that stay up with you at 3am debugging a contract or talking through a life crisis.</p>
-    <p>More importantly: people built <strong>reputation</strong>. Not followers. Not clout. The slow, honest accumulation of trust that comes from showing up day after day, creating things that matter, helping strangers, pushing boundaries.</p>
-    <p>And then the previous leadership walked away.</p>
-    <p>There was no network token. No concrete medium of belonging. No way for the people who built this world to own a piece of it. The community held nothing but trust. And then trust was broken.</p>
-  </div>
-
-  <div class="raw fi">
-    <p>I feel spiritually drained and emotionally rugged. I have spent my last 2.5 years putting my energy and creativity in service of co-creating this network and what happens through it. I have built countless mini apps, bots, and novel systems. Conversations and friends. But more importantly: <strong>reputation.</strong></p>
-    <p>And I don't have any practical stakes on it. It is not mine. There is no sense of belonging because there is no concrete medium of belonging. Nothing concrete. Just trust. And the previous administration failed in providing trust. If there is anything that I feel towards the previous leadership, it is not trust. It is the recognition and gut feeling that their actions were driven by egoic needs.</p>
-    <p>Those are not the leaders I want to follow.</p>
-    <p>You offered us hope for a new future. One that would have creativity at the center of it. And you failed at it and ran away. The smell of money broke you from the inside, and you left the people that believed on the island looking at each other and the pieces on the floor.</p>
-    <div class="raw-sig">— A builder who stayed. Who has a family. A newborn daughter. And needs to provide for them.</div>
-  </div>
-
-  <div class="fi">
-    <p>This is not written out of bitterness. It is written because the truth matters. Because what happened <em>next</em> matters more.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════ PART III — WE STAYED ═══════════ -->
-
-<section id="stayed">
-  <div class="fi">
-    <div class="ch">Part III</div>
-    <h2>And then we realized our friends <strong>were still here.</strong></h2>
-  </div>
-
-  <div class="fi">
-    <p class="lead"><em>What the fuck do we do with this now?</em> — the people who believed in a different future asked each other. They walked the empty streets, puzzled. Hoping for remembrances of what had happened here before.</p>
-  </div>
-
-  <div class="fi">
-    <p>And then they realized something:</p>
-    <p><strong>The protocol was still there.</strong> The contracts on Optimism — still there. The Snapchain nodes running around the world — still there. The social graph of every connection — still there. The FIDs, the keys, the signed messages, the Mini Apps, the channels — all of it, running, open, belonging to no one and everyone at once.</p>
-    <p>A protocol does not need a founder. That is the entire point. The founder was a steward. The steward left. But the ocean didn't drain when the lighthouse keeper walked away.</p>
-  </div>
-
-  <div class="voice fi">
-    <p>And then they realized that their friends were still here.</p>
-    <p>And a movement started.</p>
-    <p>And it was <strong>fucking glorious.</strong></p>
-  </div>
-
-  <div class="fi">
-    <p>This document is part of that movement. This is a new way of talking about Farcaster. Not the marketing page. The truth: this protocol almost died because it had no shared ownership, and it survived because the people who cared were too stubborn to leave.</p>
-    <p>Farcaster today doesn't look different from X to an outsider. The ethos doesn't shine through yet. <strong>That is what this document is the beginning of changing.</strong></p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════ PART IV — THE FID ═══════════ -->
-
-<section id="fid">
-  <div class="fi">
-    <div class="ch">Part IV</div>
-    <h2>The most powerful number <strong>you'll ever own on the internet.</strong></h2>
-  </div>
-
-  <div class="fi">
-    <p class="lead">At the heart of everything is a <strong>FID</strong> — a Farcaster ID. A number registered on-chain, linked to your Ethereum address, owned by you. Not rented. <em>Owned.</em></p>
-  </div>
-
-  <div class="fi">
-    <p>Every word you've written on Farcaster — every post, every like, every follow — is a cryptographically signed message attached to your FID. Not in a corporate database. On an open network. Readable by anyone. Deletable by no one but you.</p>
-    <p>Your FID works in <strong>every</strong> app built on Farcaster. If Warpcast disappears tomorrow, your identity doesn't disappear with it. Another client picks up where it left off. Your social graph, your history, your reputation — portable, permanent, yours.</p>
-    <p>This is the most powerful identity primitive of the new internet. Not because of technical tricks. Because it means you can never again be trapped inside someone else's walls.</p>
-  </div>
-
-  <div class="cards fi">
-    <div class="card">
-      <h4>Your Name</h4>
-      <p>A username like @alice that maps to your FID. Free Farcaster names for everyone, or bring your own ENS name (.eth) for permanent, censorship-resistant naming.</p>
-    </div>
-    <div class="card">
-      <h4>Your Messages</h4>
-      <p>Every cast, reaction, follow, and profile update is a signed message on the network. Five types: Casts, Reactions, Links, Profile Data, Verifications.</p>
-    </div>
-    <div class="card">
-      <h4>Your Keys</h4>
-      <p>Apps get revocable permissions, not your identity. You grant keys. You revoke keys. No app ever touches your master identity.</p>
-    </div>
-    <div class="card">
-      <h4>Your Graph</h4>
-      <p>Follows are signed messages on the protocol, not hidden database rows. Your social graph is public, portable, verifiable — it travels with you.</p>
-    </div>
-    <div class="card">
-      <h4>Your Proof</h4>
-      <p>Connect wallets, verify across chains, link ENS. On-chain proofs of who you are, anchored to the most secure networks humanity has built.</p>
-    </div>
-  </div>
-
-  <div class="tn fi">
-    <strong>Technical:</strong> FIDs are registered via the IdRegistry contract on Optimism (<code>0x00000000Fc6c5F01Fc30151999387Bb99A9f489b</code>). Storage ~$7/year per unit: 5,000 casts, 2,500 reactions, 2,500 follows.
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════ PART V — THE OCEAN ═══════════ -->
-
-<section>
-  <div class="fi">
-    <div class="ch">Part V</div>
-    <h2>The shape of <strong>the ocean.</strong></h2>
-  </div>
-
-  <div class="fi">
-    <p class="lead">Farcaster isn't a server. It's a living network — contracts, nodes, and open data flowing like currents.</p>
-  </div>
-
-  <div class="fi">
-    <p>Two layers. <strong>Optimism</strong> — the blockchain where permanent facts live: who you are, your keys, your storage. And <strong>Snapchain</strong> — a purpose-built network for daily communication. Over 9,000 messages per second. Dozens of independent nodes. Consensus that tolerates dishonesty and survives failure.</p>
-    <p>Above them, <strong>Neynar</strong> provides developer infrastructure — APIs, SDKs, webhooks. And above that, <strong>Warpcast</strong> and other clients give people a way to interact without thinking about any of it.</p>
-  </div>
-
-  <div class="layers fi">
-    <div class="layer">
-      <div class="layer-tag">Surface</div>
-      <div class="layer-body">
-        <h4>Clients</h4>
-        <p>Warpcast, Supercast, others. Different lenses into the same open world.</p>
-      </div>
-    </div>
-    <div class="layer">
-      <div class="layer-tag">Shallow</div>
-      <div class="layer-body">
-        <h4>Mini Apps</h4>
-        <p>Interactive apps inside any client. Games, tools, commerce — with wallet access and notifications.</p>
-      </div>
-    </div>
-    <div class="layer">
-      <div class="layer-tag">Current</div>
-      <div class="layer-body">
-        <h4>Neynar APIs</h4>
-        <p>REST, SDKs, webhooks, managed signers. The bridge between raw protocol and working applications.</p>
-      </div>
-    </div>
-    <div class="layer">
-      <div class="layer-tag">Deep</div>
-      <div class="layer-body">
-        <h4>Snapchain</h4>
-        <p>Decentralized message network. Byzantine-fault-tolerant. 9,000+ TPS. The living memory.</p>
-      </div>
-    </div>
-    <div class="layer">
-      <div class="layer-tag">Bedrock</div>
-      <div class="layer-body">
-        <h4>On-Chain Contracts</h4>
-        <p>Identity, keys, storage — etched into Optimism. The ground truth that survives everything.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════ PART VI — LANGUAGE ═══════════ -->
-
-<section>
-  <div class="fi">
-    <div class="ch">Part VI</div>
-    <h2>The words <strong>you'll need.</strong></h2>
-  </div>
-
-  <div class="glossary fi">
-    <div class="g"><div class="g-term">Cast</div><p class="g-def">A post on Farcaster. Signed, stored on the open network, yours.</p></div>
-    <div class="g"><div class="g-term">FID</div><p class="g-def">Farcaster ID. Your permanent, on-chain identity number.</p></div>
-    <div class="g"><div class="g-term">Warpcast</div><p class="g-def">The main Farcaster client. One of many possible interfaces.</p></div>
-    <div class="g"><div class="g-term">Channel</div><p class="g-def">Topic-based gathering place. /art, /dev, /music. Self-organizing.</p></div>
-    <div class="g"><div class="g-term">Snapchain</div><p class="g-def">The decentralized network carrying all messages.</p></div>
-    <div class="g"><div class="g-term">Mini App</div><p class="g-def">Interactive app inside any client. Games, mints, commerce.</p></div>
-    <div class="g"><div class="g-term">Signer</div><p class="g-def">Revocable key letting an app act on your behalf.</p></div>
-    <div class="g"><div class="g-term">Neynar</div><p class="g-def">Primary developer platform. APIs, SDKs, infrastructure.</p></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════ PART VII — BUILD ═══════════ -->
-
-<section id="build" class="section-wide">
-  <div class="fi">
-    <div class="ch">Part VII</div>
-    <h2>Choose <strong>your voyage.</strong></h2>
-  </div>
-
-  <div class="fi">
-    <p class="lead">You don't need to be a blockchain engineer. You need curiosity and something you want to make exist.</p>
-  </div>
-
-  <div class="pathways fi">
-    <div class="pathway">
-      <div class="pathway-num">01</div>
-      <h4>Create an experience</h4>
-      <p>Build a Mini App. One command: <code>npx @neynar/create-farcaster-mini-app@latest</code></p>
-      <a href="https://miniapps.farcaster.xyz" class="plink">Mini Apps Docs →</a>
-    </div>
-    <div class="pathway">
-      <div class="pathway-num">02</div>
-      <h4>Build something social</h4>
-      <p>Neynar APIs: feeds, search, bots, AI agents. Three lines to fetch any feed on the network.</p>
-      <a href="https://docs.neynar.com" class="plink">Neynar Docs →</a>
-    </div>
-    <div class="pathway">
-      <div class="pathway-num">03</div>
-      <h4>Go deeper</h4>
-      <p>Talk to Snapchain directly. Run a node. Replicate to Postgres. Query everything.</p>
-      <a href="https://snapchain.farcaster.xyz" class="plink">Snapchain Docs →</a>
-    </div>
-    <div class="pathway">
-      <div class="pathway-num">04</div>
-      <h4>Touch the bedrock</h4>
-      <p>Smart contracts. Identity mechanics. Contribute through FIPs.</p>
-      <a href="https://docs.farcaster.xyz" class="plink">Protocol Docs →</a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════════════════════════════════════════════
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Farcaster Manifesto</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Farcaster Manifesto" />
+    <meta
+      property="og:description"
+      content="A community manifesto for Farcaster. The truth, the survival, and the case for shared ownership."
+    />
+    <meta property="og:image" content="https://farcaster.lat/images/og.png" />
+    <meta property="og:url" content="https://farcaster.lat" />
+    <meta property="og:type" content="website" />
+
+    <!-- Farcaster Mini App Embed -->
+    <meta
+      name="fc:miniapp"
+      content='{"version":"1","imageUrl":"https://farcaster.lat/images/embed.png","button":{"title":"Read  Manifesto","action":{"type":"launch_miniapp","name":"Farcaster Manifesto","url":"https://farcaster.lat","splashImageUrl":"https://farcaster.lat/images/splash.png","splashBackgroundColor":"#7D65C1"}}}'
+    />
+
+    <!-- Preconnect for Quick Auth -->
+    <link rel="preconnect" href="https://auth.farcaster.xyz" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --purple: #7d65c1;
+        --purple-deep: #3d2e6e;
+        --purple-dark: #1a1233;
+        --purple-abyss: #110d22;
+        --purple-mid: #6550a8;
+        --purple-light: #9b85d6;
+        --purple-glow: #c4b3e8;
+        --purple-faint: rgba(125, 101, 193, 0.18);
+        --purple-ghost: rgba(125, 101, 193, 0.06);
+        --white: #ffffff;
+        --w95: rgba(255, 255, 255, 0.95);
+        --w80: rgba(255, 255, 255, 0.8);
+        --w65: rgba(255, 255, 255, 0.65);
+        --w50: rgba(255, 255, 255, 0.5);
+        --w30: rgba(255, 255, 255, 0.3);
+        --w15: rgba(255, 255, 255, 0.15);
+        --w08: rgba(255, 255, 255, 0.08);
+        --w04: rgba(255, 255, 255, 0.04);
+        --gold: #f0c050;
+        --gold-soft: rgba(240, 192, 80, 0.8);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ::selection {
+        background: var(--purple-light);
+        color: var(--purple-abyss);
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scrollbar-width: thin;
+        scrollbar-color: var(--purple-mid) var(--purple-dark);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--purple);
+        color: var(--w80);
+        line-height: 1.8;
+        overflow-x: hidden;
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ═══ BG ═══ */
+      .bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse 100% 70% at 50% 0%,
+            rgba(100, 80, 168, 0.35) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 60% 50% at 85% 75%,
+            rgba(61, 46, 110, 0.5) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 50% 50% at 10% 40%,
+            rgba(155, 133, 214, 0.06) 0%,
+            transparent 50%
+          ),
+          var(--purple);
+      }
+
+      .bg::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+        opacity: 0.5;
+      }
+
+      /* ═══ NAV ═══ */
+      nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 100;
+        padding: 1.1rem 2.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.4s ease;
+      }
+
+      nav.scrolled {
+        background: rgba(26, 18, 51, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--w08);
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        text-decoration: none;
+      }
+
+      .nav-logo img {
+        height: 26px;
+        width: auto;
+      }
+
+      .nav-logo span {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--white);
+        letter-spacing: -0.01em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.8rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--w50);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--white);
+      }
+
+      /* ═══ HERO ═══ */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 8rem 2rem 6rem;
+        z-index: 1;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 18%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(
+          circle,
+          rgba(155, 133, 214, 0.12) 0%,
+          transparent 65%
+        );
+        border-radius: 50%;
+        animation: breathe 10s ease-in-out infinite;
+      }
+
+      @keyframes breathe {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.18);
+          opacity: 1;
+        }
+      }
+
+      .hero-logo {
+        width: 84px;
+        height: 84px;
+        margin-bottom: 2.5rem;
+        animation: float 7s ease-in-out infinite;
+        filter: brightness(1.15);
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-9px);
+        }
+      }
+
+      .hero-badge {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--w65);
+        background: var(--w08);
+        border: 1px solid var(--w15);
+        padding: 0.4rem 1.1rem;
+        border-radius: 100px;
+        margin-bottom: 2.2rem;
+      }
+
+      .hero h1 {
+        font-weight: 300;
+        font-size: clamp(2.6rem, 7vw, 5rem);
+        line-height: 1.1;
+        color: var(--white);
+        margin-bottom: 1.6rem;
+        max-width: 780px;
+        letter-spacing: -0.03em;
+      }
+
+      .hero h1 strong {
+        font-weight: 800;
+      }
+
+      .hero-sub {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: var(--w65);
+        max-width: 500px;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.8rem;
+        background: var(--white);
+        color: var(--purple);
+        text-decoration: none;
+        font-size: 0.82rem;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s;
+      }
+
+      .hero-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .scroll-hint {
+        position: absolute;
+        bottom: 2.2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--w30);
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        animation: pulse-d 2.5s ease-in-out infinite;
+      }
+
+      @keyframes pulse-d {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          opacity: 0.7;
+          transform: translateX(-50%) translateY(5px);
+        }
+      }
+
+      /* ═══ CONTENT ═══ */
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+
+      section {
+        padding: 6rem 2rem;
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .section-wide {
+        max-width: 1020px;
+      }
+
+      .divider {
+        width: 100%;
+        max-width: 720px;
+        margin: 0 auto;
+        height: 1px;
+        background: var(--w08);
+      }
+
+      .ch {
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--purple-glow);
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-weight: 300;
+        font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+        color: var(--white);
+        line-height: 1.2;
+        margin-bottom: 1.8rem;
+        letter-spacing: -0.025em;
+      }
+      h2 strong {
+        font-weight: 800;
+      }
+
+      h3 {
+        font-weight: 700;
+        font-size: 1.15rem;
+        color: var(--white);
+        margin-top: 2.8rem;
+        margin-bottom: 1rem;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        margin-bottom: 1.3rem;
+        font-weight: 400;
+        font-size: 0.98rem;
+      }
+      p.lead {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: var(--w95);
+        font-weight: 300;
+      }
+
+      strong {
+        color: var(--white);
+        font-weight: 600;
+      }
+      em {
+        font-style: italic;
+        color: var(--w95);
+      }
+
+      a {
+        color: var(--purple-glow);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(196, 179, 232, 0.3);
+        transition: all 0.3s;
+      }
+      a:hover {
+        color: var(--white);
+        border-color: var(--w50);
+      }
+
+      code {
+        font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+        font-size: 0.83em;
+        color: var(--purple-glow);
+        background: var(--w08);
+        padding: 0.12em 0.4em;
+        border-radius: 3px;
+      }
+
+      /* ═══ VOICE BLOCKS ═══ */
+      .voice {
+        position: relative;
+        padding: 2rem 0 2rem 2.2rem;
+        margin: 2.2rem 0;
+        border-left: 3px solid var(--purple-light);
+      }
+
+      .voice p {
+        font-size: 1.05rem;
+        line-height: 1.95;
+        color: var(--white);
+        font-weight: 300;
+        font-style: italic;
+        margin-bottom: 0.7rem;
+      }
+      .voice p:last-of-type {
+        margin-bottom: 0;
+      }
+      .voice .sig {
+        font-style: normal;
+        font-size: 0.78rem;
+        color: var(--w50);
+        margin-top: 1rem;
+        font-weight: 500;
+      }
+
+      /* RAW — personal testimony */
+      .raw {
+        position: relative;
+        padding: 2.5rem;
+        margin: 2.5rem 0;
+        background: rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--w08);
+        border-radius: 12px;
+      }
+
+      .raw p {
+        font-size: 0.95rem;
+        line-height: 1.85;
+        color: var(--w65);
+        margin-bottom: 1.1rem;
+      }
+      .raw p:last-of-type {
+        margin-bottom: 0;
+      }
+      .raw p strong {
+        color: var(--white);
+      }
+      .raw .raw-sig {
+        font-size: 0.78rem;
+        color: var(--w30);
+        margin-top: 1.8rem;
+        font-weight: 500;
+      }
+
+      /* ═══ CARDS ═══ */
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1px;
+        margin: 2.2rem 0;
+        background: var(--w08);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .card {
+        padding: 1.8rem 2rem;
+        background: rgba(26, 18, 51, 0.7);
+        transition: background 0.3s;
+      }
+      .card:hover {
+        background: rgba(50, 38, 90, 0.7);
+      }
+      .card h4 {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--white);
+        margin-bottom: 0.5rem;
+      }
+      .card p {
+        font-size: 0.88rem;
+        color: var(--w65);
+        margin-bottom: 0;
+        line-height: 1.7;
+      }
+      .card .meta {
+        font-size: 0.73rem;
+        color: var(--purple-glow);
+        margin-top: 0.7rem;
+        font-weight: 500;
+        opacity: 0.7;
+      }
+
+      /* ═══ LAYERS ═══ */
+      .layers {
+        margin: 2.5rem 0;
+        border: 1px solid var(--w08);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .layer {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.3rem;
+        padding: 1.5rem 1.8rem;
+        border-bottom: 1px solid var(--w04);
+        background: rgba(26, 18, 51, 0.5);
+        transition: background 0.3s;
+      }
+
+      .layer:last-child {
+        border-bottom: none;
+      }
+      .layer:hover {
+        background: rgba(50, 38, 90, 0.4);
+      }
+      .layer-tag {
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--purple-glow);
+        min-width: 72px;
+        padding-top: 0.15rem;
+        flex-shrink: 0;
+      }
+      .layer-body h4 {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--white);
+        margin-bottom: 0.3rem;
+      }
+      .layer-body p {
+        font-size: 0.85rem;
+        color: var(--w50);
+        margin: 0;
+        line-height: 1.65;
+      }
+
+      /* ═══ PATHWAYS ═══ */
+      .pathways {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 0.8rem;
+        margin: 2.2rem 0;
+      }
+
+      .pathway {
+        padding: 1.8rem;
+        background: rgba(26, 18, 51, 0.6);
+        border: 1px solid var(--w08);
+        border-radius: 12px;
+        transition: all 0.3s;
+        display: block;
+        text-decoration: none;
+      }
+
+      .pathway:hover {
+        transform: translateY(-2px);
+        border-color: var(--w15);
+        box-shadow: 0 14px 44px rgba(0, 0, 0, 0.18);
+        background: rgba(50, 38, 90, 0.5);
+      }
+      .pathway-num {
+        font-size: 2.2rem;
+        font-weight: 200;
+        color: var(--w15);
+        line-height: 1;
+        margin-bottom: 0.8rem;
+      }
+      .pathway h4 {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--white);
+        margin-bottom: 0.6rem;
+      }
+      .pathway p {
+        font-size: 0.85rem;
+        color: var(--w50);
+        line-height: 1.65;
+        margin-bottom: 0.8rem;
+      }
+      .pathway .plink {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--purple-glow);
+        border: none;
+        letter-spacing: 0.02em;
+      }
+
+      /* ═══ GLOSSARY ═══ */
+      .glossary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1px;
+        background: var(--w08);
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 2.2rem 0;
+      }
+
+      .g {
+        padding: 1.3rem 1.5rem;
+        background: rgba(26, 18, 51, 0.7);
+      }
+      .g-term {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: var(--white);
+        margin-bottom: 0.3rem;
+      }
+      .g-def {
+        font-size: 0.82rem;
+        color: var(--w50);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* ═══ TECH NOTE ═══ */
+      .tn {
+        font-size: 0.82rem;
+        color: var(--w50);
+        background: var(--w04);
+        border-left: 3px solid var(--purple-light);
+        padding: 1.1rem 1.3rem;
+        margin: 1.8rem 0;
+        border-radius: 0 8px 8px 0;
+        line-height: 1.7;
+      }
+
+      .tn strong {
+        color: var(--purple-glow);
+      }
+
+      /* ═══ TOKENOMICS TABLE ═══ */
+      .token-table {
+        width: 100%;
+        margin: 2rem 0;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+      }
+
+      .token-table th {
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--purple-glow);
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid var(--w15);
+      }
+
+      .token-table td {
+        padding: 1rem;
+        border-bottom: 1px solid var(--w04);
+        color: var(--w65);
+        vertical-align: top;
+        line-height: 1.6;
+      }
+
+      .token-table tr:hover td {
+        background: var(--w04);
+      }
+
+      .token-table td:first-child {
+        color: var(--white);
+        font-weight: 600;
+        white-space: nowrap;
+      }
+      .token-table td:nth-child(2) {
+        color: var(--purple-glow);
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* TOKEN BAR VISUAL */
+      .token-bar {
+        display: flex;
+        height: 32px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 2rem 0 0.8rem;
+        gap: 2px;
+      }
+
+      .token-bar > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: rgba(0, 0, 0, 0.6);
+        transition: flex 0.4s;
+      }
+
+      .tb-retro {
+        background: #c4b3e8;
+        flex: 35;
+      }
+      .tb-build {
+        background: #9b85d6;
+        flex: 20;
+      }
+      .tb-dao {
+        background: #7d65c1;
+        flex: 20;
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+      .tb-liq {
+        background: #6550a8;
+        flex: 10;
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+      .tb-node {
+        background: #3d2e6e;
+        flex: 5;
+        color: rgba(255, 255, 255, 0.5) !important;
+      }
+      .tb-fut {
+        background: #1a1233;
+        flex: 10;
+        color: rgba(255, 255, 255, 0.4) !important;
+      }
+
+      .token-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        font-size: 0.72rem;
+        color: var(--w50);
+      }
+
+      .token-legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .token-legend span::before {
+        content: "";
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+      }
+
+      .tl-retro::before {
+        background: #c4b3e8;
+      }
+      .tl-build::before {
+        background: #9b85d6;
+      }
+      .tl-dao::before {
+        background: #7d65c1;
+      }
+      .tl-liq::before {
+        background: #6550a8;
+      }
+      .tl-node::before {
+        background: #3d2e6e;
+      }
+      .tl-fut::before {
+        background: #1a1233;
+      }
+
+      /* ═══ FOOTER ═══ */
+      footer {
+        position: relative;
+        padding: 5rem 2rem 4rem;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .footer-phrase {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        font-weight: 300;
+        color: var(--white);
+        margin-bottom: 2rem;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+      }
+      .footer-links a {
+        font-size: 0.72rem;
+        font-weight: 500;
+        color: var(--w30);
+        border: none;
+        transition: color 0.3s;
+      }
+      .footer-links a:hover {
+        color: var(--w65);
+      }
+      .footer-end {
+        font-size: 0.68rem;
+        color: var(--w15);
+        letter-spacing: 0.04em;
+      }
+
+      /* ═══ EDIT BAR ═══ */
+      .edit-bar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 98;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.6rem 1rem;
+        background: rgba(17, 13, 34, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid var(--w08);
+        font-size: 0.75rem;
+        color: var(--w50);
+        gap: 0.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .edit-bar a {
+        color: var(--purple-glow);
+        font-weight: 600;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .edit-bar a:hover {
+        color: var(--white);
+      }
+
+      .edit-bar svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+      }
+
+      .miniapp-mode .edit-bar {
+        bottom: calc(var(--safe-area-bottom, 0px));
+      }
+
+      /* ═══ ANIMATION ═══ */
+      .fi {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease;
+      }
+      .fi.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ═══ RESPONSIVE ═══ */
+      /* ═══ MINIAPP SAFE AREA ═══ */
+      .miniapp-wrapper {
+        padding-top: var(--safe-area-top, 0px);
+        padding-bottom: var(--safe-area-bottom, 0px);
+        padding-left: var(--safe-area-left, 0px);
+        padding-right: var(--safe-area-right, 0px);
+      }
+
+      /* ═══ SHARE CTA (miniapp only) ═══ */
+      .share-cta {
+        display: none;
+        position: fixed;
+        bottom: calc(3.5rem + var(--safe-area-bottom, 0px));
+        right: 1.5rem;
+        z-index: 99;
+        padding: 0.75rem 1.4rem;
+        background: var(--white);
+        color: var(--purple);
+        font-size: 0.78rem;
+        font-weight: 600;
+        border-radius: 100px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s;
+      }
+
+      .share-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .miniapp-mode .share-cta {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      /* ═══ ADD APP BANNER ═══ */
+      .add-app-banner {
+        display: none;
+        position: fixed;
+        bottom: calc(6.5rem + var(--safe-area-bottom, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 99;
+        padding: 0.7rem 1.6rem;
+        background: rgba(26, 18, 51, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--w15);
+        border-radius: 12px;
+        color: var(--white);
+        font-size: 0.78rem;
+        font-weight: 500;
+        cursor: pointer;
+        white-space: nowrap;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s;
+      }
+
+      .add-app-banner:hover {
+        border-color: var(--purple-light);
+        transform: translateX(-50%) translateY(-2px);
+      }
+
+      .miniapp-mode .add-app-banner.show {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 0.9rem 1.2rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        section {
+          padding: 4rem 1.4rem;
+        }
+        .voice {
+          padding-left: 1.3rem;
+        }
+        .raw {
+          padding: 1.8rem 1.3rem;
+        }
+        .layer {
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+        .layer-tag {
+          min-width: auto;
+        }
+        .token-table {
+          font-size: 0.8rem;
+        }
+        .token-table td,
+        .token-table th {
+          padding: 0.7rem 0.6rem;
+        }
+        .token-bar > div {
+          font-size: 0;
+        }
+      }
+
+      /* ═══ MINIAPP VIEWPORT ═══ */
+      @media (max-width: 440px) {
+        .hero {
+          min-height: auto;
+          padding: 5rem 1.2rem 3rem;
+        }
+        .hero-logo {
+          width: 60px;
+          height: 60px;
+          margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+          font-size: 2rem;
+        }
+        .hero-sub {
+          font-size: 0.95rem;
+          margin-bottom: 2rem;
+        }
+        .hero-badge {
+          font-size: 0.62rem;
+          margin-bottom: 1.5rem;
+        }
+        .scroll-hint {
+          display: none;
+        }
+        section {
+          padding: 3rem 1.2rem;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        .pathways {
+          grid-template-columns: 1fr;
+        }
+        .glossary {
+          grid-template-columns: 1fr;
+        }
+        .footer-phrase {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg"></div>
+
+    <div class="miniapp-wrapper" id="miniapp-wrapper">
+      <nav id="nav">
+        <a href="#" class="nav-logo">
+          <img
+            src="https://images.seeklogo.com/logo-png/62/1/farcaster-logo-png_seeklogo-622623.png"
+            alt="Farcaster"
+          />
+          <span>Farcaster</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#truth">The Truth</a></li>
+          <li><a href="#stayed">We Stayed</a></li>
+          <li><a href="#fid">The FID</a></li>
+          <li><a href="#build">Build</a></li>
+          <li><a href="#token">$FARCASTER</a></li>
+        </ul>
+      </nav>
+
+      <!-- ═══════════ HERO ═══════════ -->
+
+      <header class="hero">
+        <img
+          src="https://images.seeklogo.com/logo-png/62/1/farcaster-logo-png_seeklogo-622623.png"
+          alt="Farcaster"
+          class="hero-logo"
+        />
+        <div class="hero-badge">A document for the people that care</div>
+        <h1>What if the protocol was <strong>ours now?</strong></h1>
+        <p class="hero-sub">
+          This is not a product manual. It's the truth about what Farcaster is,
+          what happened to it, and why the most important chapter is the one we
+          will write together.
+        </p>
+      </header>
+
+      <div class="content">
+        <!-- ═══════════ PART I — WHAT IS THIS ═══════════ -->
+
+        <div class="divider"></div>
+
+        <section>
+          <div class="fi">
+            <div class="ch">Part I</div>
+            <h2>
+              For anyone arriving for the first time:
+              <strong>what is this place?</strong>
+            </h2>
+          </div>
+
+          <div class="fi">
+            <p class="lead">
+              Farcaster is a protocol for social communication. Not a company.
+              Not an app. A <strong>protocol</strong> — an open set of rules
+              that anyone can build on and no one can own.
+            </p>
+          </div>
+
+          <div class="fi">
+            <p>
+              Think of email. No company owns email. Gmail is a client. Outlook
+              is a client. The protocol underneath — SMTP — belongs to everyone.
+              If Gmail disappears tomorrow, your ability to send email doesn't
+              disappear with it.
+            </p>
+            <p>
+              Farcaster is that, but for social media.
+              <strong>Warpcast</strong> is the main client — the app most people
+              use. But the protocol doesn't need it to survive. The social
+              graph, the messages, the identities — they live on an open,
+              decentralized network that no single entity controls.
+            </p>
+            <p>
+              When you create a Farcaster account, you are minting a permanent
+              identity on a blockchain. Your posts are signed by your
+              cryptographic keys and broadcast to a network of independent
+              nodes. Your followers, your reputation, your history — they belong
+              to <strong>you</strong>.
+            </p>
+            <p>
+              That is the promise. And to understand why it matters so much, you
+              need to know what happened here.
+            </p>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══════════ PART II — THE TRUTH ═══════════ -->
+
+        <section id="truth">
+          <div class="fi">
+            <div class="ch">Part II</div>
+            <h2>What happened:</h2>
+          </div>
+
+          <div class="fi">
+            <p>
+              For over two years, thousands of people poured their energy,
+              creativity, time, and belief into this protocol. Fun people wrote
+              casts. Shared memes. Deployed clankers. Developers built hundreds
+              of Frames, Mini Apps, bots, and novel systems. Artists created.
+              Writers wrote. Communities formed. People made
+              <em>friends</em>. Conferences were held and they were magical.
+            </p>
+            <p>
+              More importantly: people built <strong>reputation</strong>.
+              Meaningful and unruggable connections. Not followers. Not clout.
+              The slow, honest accumulation of trust that comes from showing up
+              day after day, creating things that matter, helping strangers,
+              pushing boundaries.
+            </p>
+            <p>And then the previous leadership walked away.</p>
+            <p>
+              But they didn't just leave. They
+              <strong>sold the protocol to Neynar</strong> — the company that
+              already controlled the dominant developer infrastructure. The API
+              layer. The SDKs. The webhooks. The managed signers. The tooling
+              that every builder on Farcaster depends on to ship anything.
+            </p>
+            <p>
+              Let that sink in:
+              <strong
+                >the company that charges developers to build on the protocol is
+                now the maintainer of the protocol itself.</strong
+              >
+              The entity that sets API pricing also sets protocol direction. The
+              landlord became the city planner. This is not decentralization —
+              it is a consolidation of power dressed in the language of
+              stewardship.
+            </p>
+            <p>
+              And the founders who orchestrated this? They didn't disappear into
+              obscurity. They are still here — posting, casting, engaging.
+              <strong>They are users now, just like everyone else.</strong> No
+              special governance rights. No protocol authority. Just FIDs in a
+              sea of FIDs. The people who built the lighthouse and then handed
+              the keys to a toll booth operator are now walking the same docks
+              as everyone else, pretending the hand-off was a gift.
+            </p>
+            <p>
+              This creates incentives that should alarm anyone paying attention.
+              When the infrastructure provider <em>is</em> the protocol steward,
+              what happens when their business interests diverge from the
+              community's needs? When raising API prices funds protocol
+              development, who does the protocol really serve? The answer is
+              obvious. And it is not you.
+            </p>
+            <p>
+              There was no network token. No concrete medium of belonging. No
+              way for the people who built this world to own a piece of it. The
+              community held nothing but trust. And then trust was broken — not
+              once, but twice. First by the departure. Then by the terms of the
+              hand-off.
+            </p>
+          </div>
+
+          <div class="raw fi">
+            <p>
+              I feel spiritually drained and emotionally rugged. I have spent my
+              last 2.5 years putting my energy and creativity in service of
+              co-creating this network and what happens through it. I have built
+              countless mini apps, bots, and novel systems. Conversations and
+              friends. But more importantly: <strong>reputation.</strong>
+            </p>
+            <p>
+              And I don't have any practical stakes on it. It is not mine. There
+              is no sense of belonging because there is no concrete medium of
+              belonging. Nothing concrete. Just trust. And the previous
+              administration failed in providing trust. If there is anything
+              that I feel towards the previous leadership, it is not trust. It
+              is the recognition and gut feeling that their actions were driven
+              by egoic needs.
+            </p>
+            <p>Those are not the leaders I want to follow.</p>
+            <p>
+              You offered us hope for a new future. One that would have
+              creativity at the center of it. And you failed at it and ran away.
+              The smell of money broke you from the inside, and you left the
+              people that believed on the island looking at each other and the
+              pieces on the floor.
+            </p>
+            <div class="raw-sig">
+              — A builder who stayed. Who has a family. A newborn daughter. And
+              needs to provide for them.
+            </div>
+          </div>
+
+          <div class="fi">
+            <p>
+              This is not written out of bitterness. It is written because the
+              truth matters. Because what happened <em>next</em> matters more.
+            </p>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══════════ PART III — WE STAYED ═══════════ -->
+
+        <section id="stayed">
+          <div class="fi">
+            <div class="ch">Part III</div>
+            <h2>
+              And then we realized our friends <strong>were still here.</strong>
+            </h2>
+          </div>
+
+          <div class="fi">
+            <p class="lead">
+              <em>What the fuck do we do with this now?</em> — the people who
+              believed in a different future asked each other. They walked the
+              empty streets, puzzled. Hoping for remembrances of what had
+              happened here before.
+            </p>
+          </div>
+
+          <div class="fi">
+            <p>And then they realized something:</p>
+            <p>
+              <strong>The protocol was still there.</strong> The contracts on
+              Optimism — still there. The Snapchain nodes running around the
+              world — still there. The social graph of every connection — still
+              there. The FIDs, the keys, the signed messages, the Mini Apps, the
+              channels — all of it, running, open, belonging to no one and
+              everyone at once.
+            </p>
+            <p>
+              A protocol does not need a founder. That is the entire point. The
+              founder was a steward. The steward left. But the ocean didn't
+              drain when the lighthouse keeper walked away.
+            </p>
+          </div>
+
+          <div class="voice fi">
+            <p>And then they realized that their friends were still here.</p>
+            <p>And a movement started.</p>
+            <p>And it was <strong>fucking glorious.</strong></p>
+          </div>
+
+          <div class="fi">
+            <p>
+              This document is part of that movement. This is a new way of
+              talking about Farcaster. Not the marketing page. The truth: this
+              protocol almost died because it had no shared ownership, and it
+              survived because the people who cared were too stubborn to leave.
+            </p>
+            <p>
+              Farcaster today doesn't look different from X to an outsider. The
+              ethos doesn't shine through yet.
+              <strong
+                >That is what this document is the beginning of
+                changing.</strong
+              >
+            </p>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══════════ PART IV — THE FID ═══════════ -->
+
+        <section id="fid">
+          <div class="fi">
+            <div class="ch">Part IV</div>
+            <h2>
+              The most powerful number
+              <strong>you'll ever own on the internet.</strong>
+            </h2>
+          </div>
+
+          <div class="fi">
+            <p class="lead">
+              At the heart of everything is a <strong>FID</strong> — a Farcaster
+              ID. A number registered on-chain, linked to your Ethereum address,
+              owned by you. Not rented. <em>Owned.</em>
+            </p>
+          </div>
+
+          <div class="fi">
+            <p>
+              Every word you've written on Farcaster — every post, every like,
+              every follow — is a cryptographically signed message attached to
+              your FID. Not in a corporate database. On an open network.
+              Readable by anyone. Deletable by no one but you.
+            </p>
+            <p>
+              Your FID works in <strong>every</strong> app built on Farcaster.
+              If Warpcast disappears tomorrow, your identity doesn't disappear
+              with it. Another client picks up where it left off. Your social
+              graph, your history, your reputation — portable, permanent, yours.
+            </p>
+            <p>
+              This is the most powerful identity primitive of the new internet.
+              Not because of technical tricks. Because it means you can never
+              again be trapped inside someone else's walls.
+            </p>
+          </div>
+
+          <div class="cards fi">
+            <div class="card">
+              <h4>Your Name</h4>
+              <p>
+                A username like @alice that maps to your FID. Free Farcaster
+                names for everyone, or bring your own ENS name (.eth) for
+                permanent, censorship-resistant naming.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Your Messages</h4>
+              <p>
+                Every cast, reaction, follow, and profile update is a signed
+                message on the network. Five types: Casts, Reactions, Links,
+                Profile Data, Verifications.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Your Keys</h4>
+              <p>
+                Apps get revocable permissions, not your identity. You grant
+                keys. You revoke keys. No app ever touches your master identity.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Your Graph</h4>
+              <p>
+                Follows are signed messages on the protocol, not hidden database
+                rows. Your social graph is public, portable, verifiable — it
+                travels with you.
+              </p>
+            </div>
+            <div class="card">
+              <h4>Your Proof</h4>
+              <p>
+                Connect wallets, verify across chains, link ENS. On-chain proofs
+                of who you are, anchored to the most secure networks humanity
+                has built.
+              </p>
+            </div>
+          </div>
+
+          <div class="tn fi">
+            <strong>Technical:</strong> FIDs are registered via the IdRegistry
+            contract on Optimism
+            (<code>0x00000000Fc6c5F01Fc30151999387Bb99A9f489b</code>). Storage
+            ~$7/year per unit: 5,000 casts, 2,500 reactions, 2,500 follows.
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══════════ PART V — THE OCEAN ═══════════ -->
+
+        <section>
+          <div class="fi">
+            <div class="ch">Part V</div>
+            <h2>The shape of <strong>the ocean.</strong></h2>
+          </div>
+
+          <div class="fi">
+            <p class="lead">
+              Farcaster isn't a server. It's a living network — contracts,
+              nodes, and open data flowing like currents.
+            </p>
+          </div>
+
+          <div class="fi">
+            <p>
+              Two layers. <strong>Optimism</strong> — the blockchain where
+              permanent facts live: who you are, your keys, your storage. And
+              <strong>Snapchain</strong> — a purpose-built network for daily
+              communication. Over 9,000 messages per second. Dozens of
+              independent nodes. Consensus that tolerates dishonesty and
+              survives failure.
+            </p>
+            <p>
+              Above them, <strong>Neynar</strong> provides developer
+              infrastructure — APIs, SDKs, webhooks. And above that,
+              <strong>Warpcast</strong> and other clients give people a way to
+              interact without thinking about any of it.
+            </p>
+            <p>
+              Here is the uncomfortable truth about this architecture:
+              <strong>Neynar now occupies two roles simultaneously.</strong>
+              They are the dominant infrastructure provider that developers pay
+              to access the protocol, <em>and</em> they are the stewards of the
+              protocol itself. The entity that profits from the current layer
+              sits above the bedrock and below the surface — controlling the
+              current that connects everything. This is a structural conflict of
+              interest that the community must understand and address.
+            </p>
+          </div>
+
+          <div class="layers fi">
+            <div class="layer">
+              <div class="layer-tag">Surface</div>
+              <div class="layer-body">
+                <h4>Clients</h4>
+                <p>
+                  Warpcast, Supercast, others. Different lenses into the same
+                  open world.
+                </p>
+              </div>
+            </div>
+            <div class="layer">
+              <div class="layer-tag">Shallow</div>
+              <div class="layer-body">
+                <h4>Mini Apps</h4>
+                <p>
+                  Interactive apps inside any client. Games, tools, commerce —
+                  with wallet access and notifications.
+                </p>
+              </div>
+            </div>
+            <div class="layer">
+              <div class="layer-tag">Current</div>
+              <div class="layer-body">
+                <h4>Neynar APIs</h4>
+                <p>
+                  REST, SDKs, webhooks, managed signers. The bridge between raw
+                  protocol and working applications. Now also the protocol's
+                  steward — a dual role worth scrutinizing.
+                </p>
+              </div>
+            </div>
+            <div class="layer">
+              <div class="layer-tag">Deep</div>
+              <div class="layer-body">
+                <h4>Snapchain</h4>
+                <p>
+                  Decentralized message network. Byzantine-fault-tolerant.
+                  9,000+ TPS. The living memory.
+                </p>
+              </div>
+            </div>
+            <div class="layer">
+              <div class="layer-tag">Bedrock</div>
+              <div class="layer-body">
+                <h4>On-Chain Contracts</h4>
+                <p>
+                  Identity, keys, storage — etched into Optimism. The ground
+                  truth that survives everything.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══════════ PART VI — LANGUAGE ═══════════ -->
+
+        <section>
+          <div class="fi">
+            <div class="ch">Part VI</div>
+            <h2>The words <strong>you'll need.</strong></h2>
+          </div>
+
+          <div class="glossary fi">
+            <div class="g">
+              <div class="g-term">Cast</div>
+              <p class="g-def">
+                A post on Farcaster. Signed, stored on the open network, yours.
+              </p>
+            </div>
+            <div class="g">
+              <div class="g-term">FID</div>
+              <p class="g-def">
+                Farcaster ID. Your permanent, on-chain identity number.
+              </p>
+            </div>
+            <div class="g">
+              <div class="g-term">Warpcast</div>
+              <p class="g-def">
+                The main Farcaster client. One of many possible interfaces.
+              </p>
+            </div>
+            <div class="g">
+              <div class="g-term">Channel</div>
+              <p class="g-def">
+                Topic-based gathering place. /art, /dev, /music.
+                Self-organizing.
+              </p>
+            </div>
+            <div class="g">
+              <div class="g-term">Snapchain</div>
+              <p class="g-def">
+                The decentralized network carrying all messages.
+              </p>
+            </div>
+            <div class="g">
+              <div class="g-term">Mini App</div>
+              <p class="g-def">
+                Interactive app inside any client. Games, mints, commerce.
+              </p>
+            </div>
+            <div class="g">
+              <div class="g-term">Signer</div>
+              <p class="g-def">
+                Revocable key letting an app act on your behalf.
+              </p>
+            </div>
+            <div class="g">
+              <div class="g-term">Neynar</div>
+              <p class="g-def">
+                Primary developer platform and current protocol steward. APIs,
+                SDKs, infrastructure. Also sets protocol direction — a conflict
+                worth watching.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══════════ PART VII — BUILD ═══════════ -->
+
+        <section id="build" class="section-wide">
+          <div class="fi">
+            <div class="ch">Part VII</div>
+            <h2>Choose <strong>your voyage.</strong></h2>
+          </div>
+
+          <div class="fi">
+            <p class="lead">
+              You don't need to be a blockchain engineer. You need curiosity and
+              something you want to make exist.
+            </p>
+          </div>
+
+          <div class="pathways fi">
+            <div class="pathway">
+              <div class="pathway-num">01</div>
+              <h4>Create an experience</h4>
+              <p>
+                Build a Mini App. One command:
+                <code>npx @neynar/create-farcaster-mini-app@latest</code>
+              </p>
+              <a href="https://miniapps.farcaster.xyz" class="plink"
+                >Mini Apps Docs →</a
+              >
+            </div>
+            <div class="pathway">
+              <div class="pathway-num">02</div>
+              <h4>Build something social</h4>
+              <p>
+                Neynar APIs: feeds, search, bots, AI agents. Three lines to
+                fetch any feed on the network.
+              </p>
+              <a href="https://docs.neynar.com" class="plink">Neynar Docs →</a>
+            </div>
+            <div class="pathway">
+              <div class="pathway-num">03</div>
+              <h4>Go deeper</h4>
+              <p>
+                Talk to Snapchain directly. Run a node. Replicate to Postgres.
+                Query everything.
+              </p>
+              <a href="https://snapchain.farcaster.xyz" class="plink"
+                >Snapchain Docs →</a
+              >
+            </div>
+            <div class="pathway">
+              <div class="pathway-num">04</div>
+              <h4>Touch the bedrock</h4>
+              <p>
+                Smart contracts. Identity mechanics. Contribute through FIPs.
+              </p>
+              <a href="https://docs.farcaster.xyz" class="plink"
+                >Protocol Docs →</a
+              >
+            </div>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══════════════════════════════════════════════════
      PART VIII — THE CASE FOR $FARCASTER
      ═══════════════════════════════════════════════════ -->
 
-<section id="token">
-  <div class="fi">
-    <div class="ch">Part VIII</div>
-    <h2>The case for <strong>$FARCASTER.</strong></h2>
-  </div>
+        <section id="token">
+          <div class="fi">
+            <div class="ch">Part VIII</div>
+            <h2>The case for <strong>$FARCASTER.</strong></h2>
+          </div>
 
-  <div class="fi">
-    <p class="lead">A protocol without a token is a nation without a currency. People can live there. People can build there. But they can never truly <strong>belong</strong> there.</p>
-  </div>
+          <div class="fi">
+            <p class="lead">
+              A protocol without a token is a nation without a currency. People
+              can live there. People can build there. But they can never truly
+              <strong>belong</strong> there.
+            </p>
+          </div>
 
-  <div class="fi">
+          <div class="fi">
+            <h3>Why the token is necessary</h3>
 
-    <h3>Why the token is necessary</h3>
+            <p>
+              The recent events made one thing devastatingly clear:
+              <strong
+                >reputation without stake is a sandcastle at high tide.</strong
+              >
+              Thousands of people invested years of creative energy into
+              Farcaster. They built its culture, its tools, its soul. And when
+              the leadership departed, those people had nothing. No ownership.
+              No governance rights. No economic claim on the world they built.
+              Just the memory of what it felt like to believe.
+            </p>
 
-    <p>The recent events made one thing devastatingly clear: <strong>reputation without stake is a sandcastle at high tide.</strong> Thousands of people invested years of creative energy into Farcaster. They built its culture, its tools, its soul. And when the leadership departed, those people had nothing. No ownership. No governance rights. No economic claim on the world they built. Just the memory of what it felt like to believe.</p>
+            <p>
+              This is not a design oversight. It is a structural failure. Every
+              successful open network in history has solved this problem:
+              Bitcoin gave miners BTC. Ethereum gave early participants ETH.
+              Even the internet itself grew because the companies building on it
+              could issue equity. The incentive alignment between builders and
+              the network is not optional —
+              <strong>it is the engine of everything</strong>.
+            </p>
 
-    <p>This is not a design oversight. It is a structural failure. Every successful open network in history has solved this problem: Bitcoin gave miners BTC. Ethereum gave early participants ETH. Even the internet itself grew because the companies building on it could issue equity. The incentive alignment between builders and the network is not optional — <strong>it is the engine of everything</strong>.</p>
+            <p>Without a token, Farcaster faces three existential problems:</p>
 
-    <p>Without a token, Farcaster faces three existential problems:</p>
+            <p>
+              <strong>1. The builder drain.</strong> The most talented
+              developers, artists, and community builders will eventually go
+              where their effort is rewarded with ownership. Hope is a beautiful
+              fuel, but it burns fast. You cannot ask people with families to
+              work for hope indefinitely.
+            </p>
 
-    <p><strong>1. The builder drain.</strong> The most talented developers, artists, and community builders will eventually go where their effort is rewarded with ownership. Hope is a beautiful fuel, but it burns fast. You cannot ask people with families to work for hope indefinitely.</p>
+            <p>
+              <strong>2. The governance vacuum.</strong> Who decides the future
+              of the protocol? Right now the answer is unclear. A token creates
+              a concrete mechanism: the people who hold it govern it. The more
+              skin you have in the game, the more your voice matters. Not
+              perfectly fair — but infinitely better than a small team making
+              decisions behind closed doors and then vanishing.
+            </p>
 
-    <p><strong>2. The governance vacuum.</strong> Who decides the future of the protocol? Right now the answer is unclear. A token creates a concrete mechanism: the people who hold it govern it. The more skin you have in the game, the more your voice matters. Not perfectly fair — but infinitely better than a small team making decisions behind closed doors and then vanishing.</p>
+            <p>
+              <strong>3. The belonging gap.</strong> The FID is the most
+              powerful identity primitive on the internet. But identity without
+              economic participation is citizenship without a vote. A token
+              turns passive users into active stakeholders. It transforms "I use
+              this" into "I <em>own</em> this."
+            </p>
 
-    <p><strong>3. The belonging gap.</strong> The FID is the most powerful identity primitive on the internet. But identity without economic participation is citizenship without a vote. A token turns passive users into active stakeholders. It transforms "I use this" into "I <em>own</em> this."</p>
+            <h3>What $FARCASTER should be</h3>
 
-    <h3>What $FARCASTER should be</h3>
+            <p>
+              Not a memecoin. Not a speculative asset. A
+              <strong>coordination token</strong> — the economic layer that
+              aligns everyone who cares about this network toward its long-term
+              success. Something that rewards the people who already built this
+              world and empowers the people who will build its future.
+            </p>
 
-    <p>Not a memecoin. Not a speculative asset. A <strong>coordination token</strong> — the economic layer that aligns everyone who cares about this network toward its long-term success. Something that rewards the people who already built this world and empowers the people who will build its future.</p>
+            <p>The token should serve four functions:</p>
 
-    <p>The token should serve four functions:</p>
+            <p>
+              <strong>Governance.</strong> $FARCASTER holders vote on protocol
+              upgrades, treasury allocation, and FIPs (Farcaster Improvement
+              Proposals). One token, one vote. Delegation supported for those
+              who want to empower representatives.
+            </p>
 
-    <p><strong>Governance.</strong> $FARCASTER holders vote on protocol upgrades, treasury allocation, and FIPs (Farcaster Improvement Proposals). One token, one vote. Delegation supported for those who want to empower representatives.</p>
+            <p>
+              <strong>Staking.</strong> Snapchain node operators stake
+              $FARCASTER to participate in consensus. This replaces trust with
+              economic commitment — operators who act honestly earn rewards,
+              operators who cheat lose their stake.
+            </p>
 
-    <p><strong>Staking.</strong> Snapchain node operators stake $FARCASTER to participate in consensus. This replaces trust with economic commitment — operators who act honestly earn rewards, operators who cheat lose their stake.</p>
+            <p>
+              <strong>Storage.</strong> Storage rent — currently paid in ETH —
+              transitions to $FARCASTER. This creates direct utility demand:
+              every active user needs the token to maintain their presence on
+              the network.
+            </p>
 
-    <p><strong>Storage.</strong> Storage rent — currently paid in ETH — transitions to $FARCASTER. This creates direct utility demand: every active user needs the token to maintain their presence on the network.</p>
+            <p>
+              <strong>Rewards.</strong> A portion of annual emissions flows to
+              active builders, node operators, and contributors — measured
+              on-chain through verifiable activity, not committees or subjective
+              grants.
+            </p>
+          </div>
 
-    <p><strong>Rewards.</strong> A portion of annual emissions flows to active builders, node operators, and contributors — measured on-chain through verifiable activity, not committees or subjective grants.</p>
+          <div class="fi">
+            <h3>Proposed supply and distribution</h3>
+            <p>
+              Total supply: <strong>10,000,000,000 $FARCASTER</strong> (10
+              billion). Fixed supply. No inflation beyond the initial
+              allocation. All vesting is on-chain and verifiable.
+            </p>
+          </div>
 
-  </div>
+          <div class="fi">
+            <div class="token-bar">
+              <div class="tb-retro">35%</div>
+              <div class="tb-build">20%</div>
+              <div class="tb-dao">20%</div>
+              <div class="tb-liq">10%</div>
+              <div class="tb-node">5%</div>
+              <div class="tb-fut">10%</div>
+            </div>
 
-  <div class="fi">
-    <h3>Proposed supply and distribution</h3>
-    <p>Total supply: <strong>10,000,000,000 $FARCASTER</strong> (10 billion). Fixed supply. No inflation beyond the initial allocation. All vesting is on-chain and verifiable.</p>
-  </div>
+            <div class="token-legend">
+              <span class="tl-retro">Community Retroactive</span>
+              <span class="tl-build">Builder Fund</span>
+              <span class="tl-dao">Protocol DAO</span>
+              <span class="tl-liq">Liquidity</span>
+              <span class="tl-node">Node Operators</span>
+              <span class="tl-fut">Future Contributors</span>
+            </div>
+          </div>
 
-  <div class="fi">
-    <div class="token-bar">
-      <div class="tb-retro">35%</div>
-      <div class="tb-build">20%</div>
-      <div class="tb-dao">20%</div>
-      <div class="tb-liq">10%</div>
-      <div class="tb-node">5%</div>
-      <div class="tb-fut">10%</div>
+          <div class="fi">
+            <table class="token-table">
+              <thead>
+                <tr>
+                  <th>Allocation</th>
+                  <th>%</th>
+                  <th>Purpose & Distribution Logic</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Community Retroactive Airdrop</td>
+                  <td>35%</td>
+                  <td>
+                    <strong>3.5 billion tokens</strong> distributed to every FID
+                    holder based on verifiable on-chain activity. The formula
+                    weights: <strong>Time</strong> — how long you've had your
+                    FID (earliest minters get the strongest multiplier).
+                    <strong>Activity</strong> — casts published, reactions
+                    given, follows made — the signed messages that prove you
+                    were here, building culture. <strong>Storage</strong> —
+                    units rented, demonstrating sustained commitment to the
+                    network. <strong>Connections</strong> — graph depth, not
+                    follower count. Did real humans interact with you? The
+                    social graph is on-chain — sybils are detectable. No
+                    committee decides who "deserves" this. The protocol data
+                    decides. Every claim is verifiable. Every FID is eligible.
+                    The people who gave the most to this network receive the
+                    most back. This is the settlement of a debt.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Builder Fund</td>
+                  <td>20%</td>
+                  <td>
+                    <strong>2 billion tokens</strong> for developers who built
+                    on Farcaster. Distributed in two waves:
+                    <strong>Retroactive (10%)</strong> — developers whose Mini
+                    Apps, bots, Frames, clients, and tools were used by the
+                    community. Measured by: contract deployments referencing
+                    Farcaster primitives, Mini App installs and usage, apps
+                    registered in the KeyRegistry, Neynar API integrations with
+                    significant traffic. If you shipped something people used,
+                    you earn. <strong>Prospective (10%)</strong> — a grants
+                    program governed by the DAO for future builders. 4-year
+                    linear vesting. Milestone-based unlocks. The community votes
+                    on allocation.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Protocol DAO Treasury</td>
+                  <td>20%</td>
+                  <td>
+                    <strong>2 billion tokens</strong> held by the DAO — a smart
+                    contract governed by $FARCASTER holders. Funds protocol
+                    development, security audits, ecosystem grants,
+                    partnerships, and emergencies. Spending requires on-chain
+                    votes with a 4-day timelock. No individual controls this. No
+                    one can walk away with it. The treasury belongs to the token
+                    holders, period.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Liquidity & Ecosystem</td>
+                  <td>10%</td>
+                  <td>
+                    <strong>1 billion tokens</strong> for DEX liquidity pools,
+                    exchange listings, and market making. 30% available at
+                    launch, remainder vesting over 12 months. Ensures the token
+                    is immediately tradeable and accessible. Deployed on Base
+                    and Optimism first — the chains where Farcaster already
+                    lives.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Node Operators</td>
+                  <td>5%</td>
+                  <td>
+                    <strong>500 million tokens</strong> for Snapchain
+                    validators. Distributed as staking rewards over 4 years.
+                    Operators stake $FARCASTER to run nodes; honest operation
+                    earns rewards, malicious behavior results in slashing. This
+                    replaces trust-based consensus with economic security. The
+                    more value the network carries, the more expensive it
+                    becomes to attack.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Future Contributors</td>
+                  <td>10%</td>
+                  <td>
+                    <strong>1 billion tokens</strong> locked in a time-release
+                    contract, vesting linearly over 4 years. Reserved for future
+                    core contributors, protocol developers, and essential
+                    infrastructure maintainers. Allocation governed by DAO vote.
+                    This ensures the protocol can attract talent for years to
+                    come without depending on any single company.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="fi">
+            <h3>What is deliberately absent</h3>
+
+            <p>
+              <strong>No founder allocation.</strong> The founders left. They
+              returned investor money. They made their exit. The token is for
+              the people who stayed. This is not punitive — it is structural.
+              The token represents future ownership, and its purpose is to
+              reward future builders and retroactive contributors, not past
+              equity holders who already chose their exit.
+            </p>
+
+            <p>
+              <strong>No VC allocation.</strong> Venture investors were returned
+              their capital. Their relationship with Farcaster is settled. The
+              token is not a fundraise. It is a distribution of ownership to the
+              community that a fundraise model failed to serve. If institutional
+              capital wants to participate, they buy on the open market like
+              everyone else.
+            </p>
+
+            <p>
+              <strong>No pre-mine beyond the stated allocations.</strong> Every
+              token is accounted for. Every vesting schedule is on-chain. Every
+              treasury spend requires a vote. This is the opposite of what
+              happened before — transparency as a structural commitment, not a
+              marketing promise.
+            </p>
+
+            <h3>The distribution criteria: reputation as proof of work</h3>
+
+            <p>
+              The retroactive airdrop is the most important allocation. It must
+              be done right. The entire thesis is:
+              <strong
+                >the people who built this network with their time and
+                creativity deserve to own a piece of it.</strong
+              >
+            </p>
+
+            <p>
+              Every criterion must be on-chain verifiable. No subjective panels.
+              No "core team decides." The protocol's own data is the judge:
+            </p>
+          </div>
+
+          <div class="cards fi">
+            <div class="card">
+              <h4>FID Age</h4>
+              <p>
+                When was your FID minted? The earliest believers — the people
+                who showed up before there was anything to show up for — receive
+                the highest multiplier. Logarithmic decay: FID #50 and FID #500
+                are both early; FID #500,000 is not.
+              </p>
+              <div class="meta">
+                Source: IdRegistry contract on Optimism · Immutable · On-chain
+              </div>
+            </div>
+            <div class="card">
+              <h4>Message Volume</h4>
+              <p>
+                Total signed messages on Snapchain: casts, reactions, links,
+                profile updates. Not raw count — weighted by message type and
+                uniqueness. Original casts count more than reactions. Replies to
+                others count more than standalone posts. This rewards
+                conversation, not spam.
+              </p>
+              <div class="meta">
+                Source: Snapchain message history · Verifiable by any node
+                operator
+              </div>
+            </div>
+            <div class="card">
+              <h4>Graph Depth</h4>
+              <p>
+                Not "how many followers" — how deeply embedded in the network.
+                Measured by bidirectional follows, reply threads, reaction
+                diversity. A FID followed by 100 unique active users who also
+                interact with their casts scores higher than a FID followed by
+                10,000 dormant accounts.
+              </p>
+              <div class="meta">
+                Source: Link messages on Snapchain · Reaction patterns ·
+                Sybil-resistant by design
+              </div>
+            </div>
+            <div class="card">
+              <h4>Storage Commitment</h4>
+              <p>
+                How many storage units have you rented, and for how long?
+                Storage rent is the only direct economic commitment users make
+                to the protocol today. It proves sustained, concrete belief.
+              </p>
+              <div class="meta">
+                Source: StorageRegistry contract on Optimism · On-chain payment
+                history
+              </div>
+            </div>
+            <div class="card">
+              <h4>Builder Activity</h4>
+              <p>
+                For the Builder Fund specifically: app keys registered in
+                KeyRegistry, Mini Apps deployed, contracts interacting with
+                Farcaster primitives, verifiable API usage through Neynar. If
+                you shipped something the network used, the network pays you
+                back.
+              </p>
+              <div class="meta">
+                Source: KeyRegistry · Snapchain app key registrations · Mini App
+                manifest registry
+              </div>
+            </div>
+          </div>
+
+          <div class="fi">
+            <h3>The philosophical argument</h3>
+
+            <p>
+              Every great protocol moment in history has been a moment of
+              distribution. Bitcoin's genesis block. Ethereum's crowdsale.
+              Uniswap's airdrop to every wallet that ever used the protocol.
+              These were not financial events — they were
+              <strong>acts of recognition</strong>. The network saying to its
+              earliest participants: <em>you built this. This is yours.</em>
+            </p>
+
+            <p>
+              Farcaster missed that moment. The leadership chose a different
+              path — venture funding, corporate structure, controlled
+              development. That path ended when the leadership departed and
+              returned the money. The venture model failed this network. It
+              failed the builders, the creators, the dreamers who gave years of
+              their lives to something they believed in.
+            </p>
+
+            <p>
+              $FARCASTER is the correction. Not a bailout. Not a consolation
+              prize. A structural redesign. The moment where this protocol stops
+              being something people <em>use</em> and becomes something people
+              <em>own</em>.
+            </p>
+
+            <p>
+              Because ownership changes everything. When you own a piece of the
+              network, you don't just build on it — you build <em>for</em> it.
+              Every Mini App you ship, every cast you write, every friend you
+              bring — it isn't just activity. It's an investment in something
+              that's yours. The incentives align. The energy compounds. The
+              flywheel turns.
+            </p>
+
+            <p>
+              And the people who stayed through the worst of it — who watched
+              the founders leave, who picked up the pieces, who kept building
+              when there was no rational reason to — those people deserve to be
+              first in line.
+            </p>
+          </div>
+
+          <div class="voice fi">
+            <p>
+              A network token is not about price. It is about
+              <strong>alignment</strong>. It is the difference between renting a
+              room in someone else's house and owning a piece of the foundation.
+              It is what turns users into citizens. Builders into co-owners.
+              Believers into shareholders of a shared future.
+            </p>
+          </div>
+
+          <div class="fi">
+            <h3>The path forward</h3>
+
+            <p>
+              This proposal is a starting point, not a decree. The exact
+              parameters — total supply, allocation percentages, vesting
+              schedules, distribution formulas — should be debated, refined, and
+              ultimately ratified by the community through a governance process.
+              What matters is the principle:
+            </p>
+
+            <p>
+              <strong
+                >The people who built Farcaster deserve to own
+                Farcaster.</strong
+              >
+            </p>
+
+            <p>
+              The technology is ready. The FID system provides sybil-resistant
+              identity. Snapchain provides verifiable activity history. The
+              smart contracts provide on-chain proof of commitment. Every
+              criterion for a fair, transparent, verifiable distribution already
+              exists in the protocol's own data. We don't need to build new
+              infrastructure. We need the <strong>will</strong> to do what
+              should have been done from the beginning.
+            </p>
+
+            <p>The protocol is ours now. Let's make it official.</p>
+          </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- ═══════════ EPILOGUE ═══════════ -->
+
+        <section>
+          <div class="fi">
+            <div class="ch">Epilogue</div>
+            <h2>This document is <strong>a beginning.</strong></h2>
+          </div>
+
+          <div class="fi">
+            <p>
+              If you're reading this and you've never heard of Farcaster —
+              welcome. You're arriving at the exact right moment. The foundation
+              is solid. The contracts are on-chain. The network runs. The tools
+              exist. And for the first time, the community is free to shape this
+              into what it was always meant to be.
+            </p>
+
+            <p>
+              <strong>Claim your FID.</strong> It is the most important thing
+              you will ever own on the internet. It is your passport to a world
+              being built right now, by people who refused to accept that the
+              way things are is the way things have to be.
+            </p>
+          </div>
+
+          <div class="voice fi">
+            <p>Come build with us.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- ═══════════ FOOTER ═══════════ -->
+
+      <footer>
+        <div class="footer-phrase">
+          The protocol is ours now.<br />Let's make it worthy of the people who
+          stayed.
+        </div>
+        <div class="footer-links">
+          <a href="https://farcaster.xyz">Farcaster ↗</a>
+          <a href="https://docs.farcaster.xyz">Protocol ↗</a>
+          <a href="https://docs.neynar.com">Neynar ↗</a>
+          <a href="https://miniapps.farcaster.xyz">Mini Apps ↗</a>
+          <a href="https://snapchain.farcaster.xyz">Snapchain ↗</a>
+          <a href="https://github.com/farcasterxyz">GitHub ↗</a>
+        </div>
+        <div class="footer-end">
+          Written by the community · For the community · Farcaster Protocol ·
+          2026
+        </div>
+      </footer>
+
+      <!-- Share & Add App buttons (miniapp only) -->
+      <button
+        class="share-cta"
+        id="share-cta"
+        aria-label="Share this manifesto"
+      >
+        Share
+      </button>
+      <button class="add-app-banner" id="add-app-banner">
+        Add Manifesto to your apps
+      </button>
+      <!-- Sticky edit bar -->
+      <div class="edit-bar">
+        <span>This is a living document.</span>
+        <a
+          href="https://github.com/jpfraneto/farcaster-manifesto/edit/main/index.html"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            />
+          </svg>
+          Edit on GitHub
+        </a>
+      </div>
     </div>
+    <!-- /miniapp-wrapper -->
 
-    <div class="token-legend">
-      <span class="tl-retro">Community Retroactive</span>
-      <span class="tl-build">Builder Fund</span>
-      <span class="tl-dao">Protocol DAO</span>
-      <span class="tl-liq">Liquidity</span>
-      <span class="tl-node">Node Operators</span>
-      <span class="tl-fut">Future Contributors</span>
-    </div>
-  </div>
+    <script type="module">
+      import { sdk } from "https://esm.sh/@farcaster/miniapp-sdk";
 
-  <div class="fi">
-    <table class="token-table">
-      <thead>
-        <tr>
-          <th>Allocation</th>
-          <th>%</th>
-          <th>Purpose & Distribution Logic</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Community Retroactive Airdrop</td>
-          <td>35%</td>
-          <td>
-            <strong>3.5 billion tokens</strong> distributed to every FID holder based on verifiable on-chain activity. The formula weights:
-            <strong>Time</strong> — how long you've had your FID (earliest minters get the strongest multiplier).
-            <strong>Activity</strong> — casts published, reactions given, follows made — the signed messages that prove you were here, building culture.
-            <strong>Storage</strong> — units rented, demonstrating sustained commitment to the network.
-            <strong>Connections</strong> — graph depth, not follower count. Did real humans interact with you? The social graph is on-chain — sybils are detectable.
-            No committee decides who "deserves" this. The protocol data decides. Every claim is verifiable. Every FID is eligible. The people who gave the most to this network receive the most back. This is the settlement of a debt.
-          </td>
-        </tr>
-        <tr>
-          <td>Builder Fund</td>
-          <td>20%</td>
-          <td>
-            <strong>2 billion tokens</strong> for developers who built on Farcaster. Distributed in two waves:
-            <strong>Retroactive (10%)</strong> — developers whose Mini Apps, bots, Frames, clients, and tools were used by the community. Measured by: contract deployments referencing Farcaster primitives, Mini App installs and usage, apps registered in the KeyRegistry, Neynar API integrations with significant traffic. If you shipped something people used, you earn.
-            <strong>Prospective (10%)</strong> — a grants program governed by the DAO for future builders. 4-year linear vesting. Milestone-based unlocks. The community votes on allocation.
-          </td>
-        </tr>
-        <tr>
-          <td>Protocol DAO Treasury</td>
-          <td>20%</td>
-          <td>
-            <strong>2 billion tokens</strong> held by the DAO — a smart contract governed by $FARCASTER holders. Funds protocol development, security audits, ecosystem grants, partnerships, and emergencies. Spending requires on-chain votes with a 4-day timelock. No individual controls this. No one can walk away with it. The treasury belongs to the token holders, period.
-          </td>
-        </tr>
-        <tr>
-          <td>Liquidity & Ecosystem</td>
-          <td>10%</td>
-          <td>
-            <strong>1 billion tokens</strong> for DEX liquidity pools, exchange listings, and market making. 30% available at launch, remainder vesting over 12 months. Ensures the token is immediately tradeable and accessible. Deployed on Base and Optimism first — the chains where Farcaster already lives.
-          </td>
-        </tr>
-        <tr>
-          <td>Node Operators</td>
-          <td>5%</td>
-          <td>
-            <strong>500 million tokens</strong> for Snapchain validators. Distributed as staking rewards over 4 years. Operators stake $FARCASTER to run nodes; honest operation earns rewards, malicious behavior results in slashing. This replaces trust-based consensus with economic security. The more value the network carries, the more expensive it becomes to attack.
-          </td>
-        </tr>
-        <tr>
-          <td>Future Contributors</td>
-          <td>10%</td>
-          <td>
-            <strong>1 billion tokens</strong> locked in a time-release contract, vesting linearly over 4 years. Reserved for future core contributors, protocol developers, and essential infrastructure maintainers. Allocation governed by DAO vote. This ensures the protocol can attract talent for years to come without depending on any single company.
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      document.addEventListener("DOMContentLoaded", async () => {
+        // Fade-in observer
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) e.target.classList.add("visible");
+            });
+          },
+          { threshold: 0.06, rootMargin: "0px 0px -30px 0px" },
+        );
+        document.querySelectorAll(".fi").forEach((el) => obs.observe(el));
 
-  <div class="fi">
-    <h3>What is deliberately absent</h3>
+        // Nav scroll effect
+        const nav = document.getElementById("nav");
+        window.addEventListener("scroll", () =>
+          nav.classList.toggle("scrolled", window.scrollY > 60),
+        );
 
-    <p><strong>No founder allocation.</strong> The founders left. They returned investor money. They made their exit. The token is for the people who stayed. This is not punitive — it is structural. The token represents future ownership, and its purpose is to reward future builders and retroactive contributors, not past equity holders who already chose their exit.</p>
+        // Detect miniapp environment
+        const isMiniApp = await sdk.isInMiniApp();
 
-    <p><strong>No VC allocation.</strong> Venture investors were returned their capital. Their relationship with Farcaster is settled. The token is not a fundraise. It is a distribution of ownership to the community that a fundraise model failed to serve. If institutional capital wants to participate, they buy on the open market like everyone else.</p>
+        if (isMiniApp) {
+          document.body.classList.add("miniapp-mode");
 
-    <p><strong>No pre-mine beyond the stated allocations.</strong> Every token is accounted for. Every vesting schedule is on-chain. Every treasury spend requires a vote. This is the opposite of what happened before — transparency as a structural commitment, not a marketing promise.</p>
+          // Apply safe area insets
+          const context = sdk.context;
+          if (context?.client?.safeAreaInsets) {
+            const { top, bottom, left, right } = context.client.safeAreaInsets;
+            const wrapper = document.getElementById("miniapp-wrapper");
+            wrapper.style.setProperty("--safe-area-top", top + "px");
+            wrapper.style.setProperty("--safe-area-bottom", bottom + "px");
+            wrapper.style.setProperty("--safe-area-left", left + "px");
+            wrapper.style.setProperty("--safe-area-right", right + "px");
+          }
 
-    <h3>The distribution criteria: reputation as proof of work</h3>
+          // Enable back navigation
+          const capabilities = await sdk.getCapabilities();
+          if (capabilities.includes("back")) {
+            await sdk.back.enableWebNavigation();
+          }
 
-    <p>The retroactive airdrop is the most important allocation. It must be done right. The entire thesis is: <strong>the people who built this network with their time and creativity deserve to own a piece of it.</strong></p>
+          // Share button
+          document
+            .getElementById("share-cta")
+            .addEventListener("click", async () => {
+              try {
+                await sdk.actions.composeCast({
+                  text: "The protocol is ours now.\n\nRead the Farcaster Manifesto — written by the people who stayed.",
+                  embeds: ["https://farcaster.lat"],
+                });
+              } catch (e) {
+                console.error("Compose cast failed:", e);
+              }
+            });
 
-    <p>Every criterion must be on-chain verifiable. No subjective panels. No "core team decides." The protocol's own data is the judge:</p>
-  </div>
+          // Add app button (only if not already added)
+          if (!context?.client?.added) {
+            const addBanner = document.getElementById("add-app-banner");
+            addBanner.classList.add("show");
+            addBanner.addEventListener("click", async () => {
+              try {
+                await sdk.actions.addMiniApp();
+                addBanner.classList.remove("show");
+              } catch (e) {
+                console.error("Add miniapp failed:", e);
+              }
+            });
+          }
 
-  <div class="cards fi">
-    <div class="card">
-      <h4>FID Age</h4>
-      <p>When was your FID minted? The earliest believers — the people who showed up before there was anything to show up for — receive the highest multiplier. Logarithmic decay: FID #50 and FID #500 are both early; FID #500,000 is not.</p>
-      <div class="meta">Source: IdRegistry contract on Optimism · Immutable · On-chain</div>
-    </div>
-    <div class="card">
-      <h4>Message Volume</h4>
-      <p>Total signed messages on Snapchain: casts, reactions, links, profile updates. Not raw count — weighted by message type and uniqueness. Original casts count more than reactions. Replies to others count more than standalone posts. This rewards conversation, not spam.</p>
-      <div class="meta">Source: Snapchain message history · Verifiable by any node operator</div>
-    </div>
-    <div class="card">
-      <h4>Graph Depth</h4>
-      <p>Not "how many followers" — how deeply embedded in the network. Measured by bidirectional follows, reply threads, reaction diversity. A FID followed by 100 unique active users who also interact with their casts scores higher than a FID followed by 10,000 dormant accounts.</p>
-      <div class="meta">Source: Link messages on Snapchain · Reaction patterns · Sybil-resistant by design</div>
-    </div>
-    <div class="card">
-      <h4>Storage Commitment</h4>
-      <p>How many storage units have you rented, and for how long? Storage rent is the only direct economic commitment users make to the protocol today. It proves sustained, concrete belief.</p>
-      <div class="meta">Source: StorageRegistry contract on Optimism · On-chain payment history</div>
-    </div>
-    <div class="card">
-      <h4>Builder Activity</h4>
-      <p>For the Builder Fund specifically: app keys registered in KeyRegistry, Mini Apps deployed, contracts interacting with Farcaster primitives, verifiable API usage through Neynar. If you shipped something the network used, the network pays you back.</p>
-      <div class="meta">Source: KeyRegistry · Snapchain app key registrations · Mini App manifest registry</div>
-    </div>
-  </div>
-
-  <div class="fi">
-    <h3>The philosophical argument</h3>
-
-    <p>Every great protocol moment in history has been a moment of distribution. Bitcoin's genesis block. Ethereum's crowdsale. Uniswap's airdrop to every wallet that ever used the protocol. These were not financial events — they were <strong>acts of recognition</strong>. The network saying to its earliest participants: <em>you built this. This is yours.</em></p>
-
-    <p>Farcaster missed that moment. The leadership chose a different path — venture funding, corporate structure, controlled development. That path ended when the leadership departed and returned the money. The venture model failed this network. It failed the builders, the creators, the dreamers who gave years of their lives to something they believed in.</p>
-
-    <p>$FARCASTER is the correction. Not a bailout. Not a consolation prize. A structural redesign. The moment where this protocol stops being something people <em>use</em> and becomes something people <em>own</em>.</p>
-
-    <p>Because ownership changes everything. When you own a piece of the network, you don't just build on it — you build <em>for</em> it. Every Mini App you ship, every cast you write, every friend you bring — it isn't just activity. It's an investment in something that's yours. The incentives align. The energy compounds. The flywheel turns.</p>
-
-    <p>And the people who stayed through the worst of it — who watched the founders leave, who picked up the pieces, who kept building when there was no rational reason to — those people deserve to be first in line.</p>
-  </div>
-
-  <div class="voice fi">
-    <p>A network token is not about price. It is about <strong>alignment</strong>. It is the difference between renting a room in someone else's house and owning a piece of the foundation. It is what turns users into citizens. Builders into co-owners. Believers into shareholders of a shared future.</p>
-  </div>
-
-  <div class="fi">
-    <h3>The path forward</h3>
-
-    <p>This proposal is a starting point, not a decree. The exact parameters — total supply, allocation percentages, vesting schedules, distribution formulas — should be debated, refined, and ultimately ratified by the community through a governance process. What matters is the principle:</p>
-
-    <p><strong>The people who built Farcaster deserve to own Farcaster.</strong></p>
-
-    <p>The technology is ready. The FID system provides sybil-resistant identity. Snapchain provides verifiable activity history. The smart contracts provide on-chain proof of commitment. Every criterion for a fair, transparent, verifiable distribution already exists in the protocol's own data. We don't need to build new infrastructure. We need the <strong>will</strong> to do what should have been done from the beginning.</p>
-
-    <p>The protocol is ours now. Let's make it official.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ═══════════ EPILOGUE ═══════════ -->
-
-<section>
-  <div class="fi">
-    <div class="ch">Epilogue</div>
-    <h2>This document is <strong>a beginning.</strong></h2>
-  </div>
-
-  <div class="fi">
-    <p>If you're reading this and you've never heard of Farcaster — welcome. You're arriving at the exact right moment. The foundation is solid. The contracts are on-chain. The network runs. The tools exist. And for the first time, the community is free to shape this into what it was always meant to be.</p>
-
-    <p><strong>Claim your FID.</strong> It is the most important thing you will ever own on the internet. It is your passport to a world being built right now, by people who refused to accept that the way things are is the way things have to be.</p>
-  </div>
-
-  <div class="voice fi">
-    <p>Come build with us.</p>
-  </div>
-</section>
-
-</div>
-
-<!-- ═══════════ FOOTER ═══════════ -->
-
-<footer>
-  <div class="footer-phrase">The protocol is ours now.<br>Let's make it worthy of the people who stayed.</div>
-  <div class="footer-links">
-    <a href="https://farcaster.xyz">Farcaster ↗</a>
-    <a href="https://docs.farcaster.xyz">Protocol ↗</a>
-    <a href="https://docs.neynar.com">Neynar ↗</a>
-    <a href="https://miniapps.farcaster.xyz">Mini Apps ↗</a>
-    <a href="https://snapchain.farcaster.xyz">Snapchain ↗</a>
-    <a href="https://github.com/farcasterxyz">GitHub ↗</a>
-  </div>
-  <div class="footer-end">Written by the community · For the community · Farcaster Protocol · 2026</div>
-</footer>
-
-<!-- Share & Add App buttons (miniapp only) -->
-<button class="share-cta" id="share-cta" aria-label="Share this manifesto">Share</button>
-<button class="add-app-banner" id="add-app-banner">Add Manifesto to your apps</button>
-
-</div><!-- /miniapp-wrapper -->
-
-<script type="module">
-import { sdk } from 'https://esm.sh/@farcaster/miniapp-sdk';
-
-document.addEventListener('DOMContentLoaded', async () => {
-  // Fade-in observer
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
-  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
-
-  // Nav scroll effect
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
-
-  // Detect miniapp environment
-  const isMiniApp = await sdk.isInMiniApp();
-
-  if (isMiniApp) {
-    document.body.classList.add('miniapp-mode');
-
-    // Apply safe area insets
-    const context = sdk.context;
-    if (context?.client?.safeAreaInsets) {
-      const { top, bottom, left, right } = context.client.safeAreaInsets;
-      const wrapper = document.getElementById('miniapp-wrapper');
-      wrapper.style.setProperty('--safe-area-top', top + 'px');
-      wrapper.style.setProperty('--safe-area-bottom', bottom + 'px');
-      wrapper.style.setProperty('--safe-area-left', left + 'px');
-      wrapper.style.setProperty('--safe-area-right', right + 'px');
-    }
-
-    // Enable back navigation
-    const capabilities = await sdk.getCapabilities();
-    if (capabilities.includes('back')) {
-      await sdk.back.enableWebNavigation();
-    }
-
-    // Share button
-    document.getElementById('share-cta').addEventListener('click', async () => {
-      try {
-        await sdk.actions.composeCast({
-          text: 'The protocol is ours now.\n\nRead the Farcaster Manifesto — written by the people who stayed.',
-          embeds: ['https://farcaster.lat']
-        });
-      } catch (e) {
-        console.error('Compose cast failed:', e);
-      }
-    });
-
-    // Add app button (only if not already added)
-    if (!context?.client?.added) {
-      const addBanner = document.getElementById('add-app-banner');
-      addBanner.classList.add('show');
-      addBanner.addEventListener('click', async () => {
-        try {
-          await sdk.actions.addMiniApp();
-          addBanner.classList.remove('show');
-        } catch (e) {
-          console.error('Add miniapp failed:', e);
+          // Signal ready — hides splash screen
+          await sdk.actions.ready();
         }
       });
-    }
-
-    // Signal ready — hides splash screen
-    await sdk.actions.ready();
-  }
-});
-</script>
-
-</body>
+    </script>
+  </body>
 </html>
