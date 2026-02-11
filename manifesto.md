@@ -21,7 +21,7 @@ Part 0
 
 :::: fi
 ::: lead
-Farcaster is an open social protocol --- not a company, not an app --- where your identity, posts, and connections are yours forever. Its original founders left and sold control to Neynar, the dominant infrastructure provider, creating a dangerous concentration of power over a system that was meant to belong to everyone.
+Farcaster is an open social protocol --- not a company, not an app --- where your identity, posts, and connections are yours forever. Its original founders left and sold control to Neynar, the dominant infrastructure provider, creating a dangerous concentration of power.
 :::
 
 This manifesto is a call to action: we propose **\$FARCASTER**, a community token that gives ownership, governance, and economic stake to the people who actually built this network --- rewarding years of contribution, funding future development through a DAO, and ensuring that no single entity can ever again decide the fate of something that belongs to all of us.
