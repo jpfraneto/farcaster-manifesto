@@ -1063,9 +1063,7 @@
         <div class="hero-badge">A document for the people that care</div>
         <h1>What if the protocol was <strong>ours now?</strong></h1>
         <p class="hero-sub">
-          This is not a product manual. It's the truth about what Farcaster is,
-          what happened to it, and why the most important chapter is the one we
-          will write together.
+          A community powered manifesto for the future of farcaster.
         </p>
       </header>
 
@@ -2163,6 +2161,9 @@
         const isMiniApp = await sdk.isInMiniApp();
 
         if (isMiniApp) {
+          // Signal ready immediately — hides splash screen
+          await sdk.actions.ready();
+
           document.body.classList.add("miniapp-mode");
 
           // Apply safe area insets
@@ -2209,9 +2210,6 @@
               }
             });
           }
-
-          // Signal ready — hides splash screen
-          await sdk.actions.ready();
         }
       });
     </script>
