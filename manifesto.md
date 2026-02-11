@@ -137,6 +137,7 @@ This document is part of that movement. This is a new way of talking about Farca
 
 Farcaster today doesn\'t look different from X or threads or other social media platforms to an outsider. The ethos doesn\'t shine through yet. **That is what this document is the beginning of changing.**
 :::
+:::::::::::
 
 ::: divider
 :::
@@ -308,163 +309,7 @@ Identity, keys, storage --- etched into Optimism. The ground truth that survives
 :::
 :::::
 ::::::::::::::::::
-:::::::::::::::::::::::::
-
-::: divider
-:::
-
-::::::::::::::::::::::: {#language .section}
-::::: fi
-::: ch
-Part VI
-:::
-
-::: section-heading
-
-## The words **you\'ll need.**
-
-:::
-:::::
-
-::::::::::::::::::: {.glossary .fi}
-:::: g
-::: g-term
-Cast
-:::
-
-A post on Farcaster. Signed, stored on the open network, yours.
-::::
-
-:::: g
-::: g-term
-FID
-:::
-
-Farcaster ID. Your permanent, on-chain identity number.
-::::
-
-:::: g
-::: g-term
-Warpcast
-:::
-
-The main Farcaster client. One of many possible interfaces.
-::::
-
-:::: g
-::: g-term
-Channel
-:::
-
-Topic-based gathering place. /art, /dev, /music. Self-organizing.
-::::
-
-:::: g
-::: g-term
-Snapchain
-:::
-
-The decentralized network carrying all messages.
-::::
-
-:::: g
-::: g-term
-Mini App
-:::
-
-Interactive app inside any client. Games, mints, commerce.
-::::
-
-:::: g
-::: g-term
-Signer
-:::
-
-Revocable key letting an app act on your behalf.
-::::
-
-:::: g
-::: g-term
-Neynar
-:::
-
-Primary developer platform and current protocol steward. APIs, SDKs, infrastructure. Also sets protocol direction --- a conflict worth watching.
-::::
-:::::::::::::::::::
-:::::::::::::::::::::::
-
-::: divider
-:::
-
-::::::::::::::::: {#build .section .section-wide}
-::::: fi
-::: ch
-Part VII
-:::
-
-::: section-heading
-
-## Choose **your voyage and build.**
-
-:::
-:::::
-
-:::: fi
-::: lead
-You don\'t need to be a blockchain engineer. You need curiosity and something you want to create.
-:::
-::::
-
-::::::::::: {.pathways .fi}
-:::: pathway
-::: pathway-num
-01
-:::
-
-#### Start with the simplest
-
-Build a Mini App.
-
-[Mini Apps Docs →](https://miniapps.farcaster.xyz){.plink target="\_blank" rel="noopener"}
-::::
-
-:::: pathway
-::: pathway-num
-02
-:::
-
-#### Create something social
-
-Neynar APIs: feeds, search, bots, AI agents. Three lines to fetch any feed on the network.
-
-[Neynar Docs →](https://docs.neynar.com){.plink target="\_blank" rel="noopener"}
-::::
-
-:::: pathway
-::: pathway-num
-03
-:::
-
-#### Go deeper
-
-Talk to Snapchain directly. Run a node. Replicate to Postgres. Query everything.
-
-[Snapchain Docs →](https://snapchain.farcaster.xyz){.plink target="\_blank" rel="noopener"}
-::::
-
-:::: pathway
-::: pathway-num
-04
-:::
-
-#### Touch the bedrock
-
-Smart contracts. Identity mechanics. Contribute through FIPs.
-
-[Protocol Docs →](https://docs.farcaster.xyz){.plink target="\_blank" rel="noopener"}
-::::
-:::::::::::
-:::::::::::::::::
+::::::::::::::::::::::::::
 
 ::: divider
 :::
@@ -472,7 +317,7 @@ Smart contracts. Identity mechanics. Contribute through FIPs.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::: {#token .section}
 ::::: fi
 ::: ch
-Part VIII
+Part VI
 :::
 
 ::: section-heading
