@@ -14,25 +14,19 @@
     "splashImageUrl": "https://farcaster.lat/images/splash.png",
     "splashBackgroundColor": "#7D65C1",
     "webhookUrl": "https://farcaster.lat/api/webhook",
-    "subtitle": "The People Who Stayed",
-    "description": "A community manifesto for Farcaster. The truth about what happened, why the protocol survived, and the case for shared ownership. Written by the people who stayed.",
+    "subtitle": "A document for the people that care about decentralized social media.",
+    "description": "A community manifesto for Farcaster.",
     "screenshotUrls": [
       "https://farcaster.lat/images/screenshot1.png",
       "https://farcaster.lat/images/screenshot2.png",
       "https://farcaster.lat/images/screenshot3.png"
     ],
     "primaryCategory": "social",
-    "tags": [
-      "manifesto",
-      "farcaster",
-      "community",
-      "protocol",
-      "governance"
-    ],
+    "tags": ["manifesto", "farcaster", "community", "protocol", "governance"],
     "heroImageUrl": "https://farcaster.lat/images/hero.png",
-    "tagline": "The protocol is ours now.",
-    "ogTitle": "Farcaster Manifesto — The People Who Stayed",
-    "ogDescription": "A community manifesto for Farcaster. The truth, the survival, and the case for shared ownership.",
+    "tagline": "What if the protocol was ours?",
+    "ogTitle": "Farcaster Manifesto",
+    "ogDescription": "A community manifesto for Farcaster.",
     "ogImageUrl": "https://farcaster.lat/images/og.png"
   }
 }

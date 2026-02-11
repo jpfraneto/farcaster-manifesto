@@ -89,45 +89,72 @@ echo "Starting image generation with Gemini $MODEL..."
 echo "Using Farcaster arches as reference image."
 echo ""
 
+# Optional: generate only specific image(s). Usage: ./generate-images.sh [hero|icon|splash|embed|og|screenshot1|screenshot2|screenshot3]
+ONLY="${1:-}"
+
+run_if() {
+  local name="$1"
+  if [ -z "$ONLY" ] || [ "$ONLY" = "$name" ]; then
+    return 0
+  fi
+  return 1
+}
+
 # 1. App Icon (200x200, 1:1)
-generate_image "icon.png" \
-  "Using this Farcaster arches logo as the primary reference, create a miniapp icon. Keep the white arches symbol as the central element but make it slightly smaller. The background should be a rich deep-to-medium purple gradient (#1a1233 at edges to #7D65C1 at center) with a very subtle radial glow behind the arches. Add a faint, barely visible network grid pattern in the background to suggest decentralization. Clean, minimal, no text. The arches should feel iconic and bold at small sizes. Square format." \
-  "1:1"
+if run_if "icon"; then
+  generate_image "icon.png" \
+    "Using this Farcaster arches logo as the primary reference, create a miniapp icon. Keep the white arches symbol as the central element but make it slightly smaller. The background should be a rich deep-to-medium purple gradient (#1a1233 at edges to #7D65C1 at center) with a very subtle radial glow behind the arches. Add a faint, barely visible network grid pattern in the background to suggest decentralization. Clean, minimal, no text. The arches should feel iconic and bold at small sizes. Square format." \
+    "1:1"
+fi
 
 # 2. Splash Image (200x200, 1:1)
-generate_image "splash.png" \
-  "Using this Farcaster arches logo as reference, create a clean splash/loading screen icon. Place the white arches symbol perfectly centered on a solid flat purple (#7D65C1) background. The arches should be crisp, white, and exactly match the shape in the reference image. No gradients, no effects, no text — just the clean white arches on the flat purple. This must be readable at very small sizes. Square format." \
-  "1:1"
+if run_if "splash"; then
+  generate_image "splash.png" \
+    "Using this Farcaster arches logo as reference, create a clean splash/loading screen icon. Place the white arches symbol perfectly centered on a solid flat purple (#7D65C1) background. The arches should be crisp, white, and exactly match the shape in the reference image. No gradients, no effects, no text — just the clean white arches on the flat purple. This must be readable at very small sizes. Square format." \
+    "1:1"
+fi
 
 # 3. Embed Image (1200x800, 3:2)
-generate_image "embed.png" \
-  "Create a dramatic social sharing card image for the Farcaster Manifesto. Use a dark moody gradient background from deep purple-black (#110d22) at the top to medium purple (#7D65C1) at the bottom. Place the white Farcaster arches symbol (from the reference image) at the top center, about 15% of the image height. Below it, render large bold white text reading 'The Protocol Is Ours Now.' in a clean sans-serif font (like Inter Black). Below that, smaller lighter text in rgba(255,255,255,0.6): 'Farcaster Manifesto'. At the very bottom, a thin glowing purple line (#c4b3e8) stretching across the width with small dots along it suggesting network nodes. Subtle noise/grain texture overlay across the whole image. Landscape 3:2 format." \
-  "3:2"
+if run_if "embed"; then
+  generate_image "embed.png" \
+    "Create a dramatic social sharing card image for the Farcaster Manifesto. Use a dark moody gradient background from deep purple-black (#110d22) at the top to medium purple (#7D65C1) at the bottom. Place the white Farcaster arches symbol (from the reference image) at the top center, about 15% of the image height. Below it, render large bold white text reading 'What if the protocol was ours?' in a clean sans-serif font (like Inter Black). Below that, smaller lighter text: 'Farcaster Manifesto'. At the very bottom, a thin glowing purple line stretching across the width with small dots along it suggesting network nodes. Subtle noise/grain texture overlay across the whole image. Landscape 3:2 format." \
+    "3:2"
+fi
 
 # 4. OG Image (roughly 1200x630, use 16:9)
-generate_image "og.png" \
-  "Create an Open Graph sharing image for the Farcaster Manifesto. Dark background gradient from #110d22 (left) to #3d2e6e (right). Left-aligned layout: the white Farcaster arches symbol (from reference) in the top-left at moderate size. Below it, large bold white text 'Farcaster Manifesto' in Inter or similar clean sans-serif, weight 800. Below that, lighter text 'The People Who Stayed' in weight 300, color rgba(255,255,255,0.65). A thin horizontal glowing purple rule (#c4b3e8) separates this from the bottom where 'manifesto.farcaster.lat' appears in small monospace text. Right side of the image has a very subtle, large faded version of the arches as a watermark at 5% opacity. Grain texture overlay. Wide landscape 16:9 format." \
-  "16:9"
+if run_if "og"; then
+  generate_image "og.png" \
+    "Create an Open Graph sharing image for the Farcaster Manifesto. Dark background gradient from #110d22 (left) to #3d2e6e (right). Left-aligned layout: the white Farcaster arches symbol (from reference) in the top-left at moderate size. Below it, large bold white text 'Farcaster Manifesto' in Inter or similar clean sans-serif, weight 800. Below that, lighter text 'The People Who Stayed' in weight 300, color rgba(255,255,255,0.65). A thin horizontal glowing purple rule (#c4b3e8) separates this from the bottom where 'manifesto.farcaster.lat' appears in small monospace text. Right side of the image has a very subtle, large faded version of the arches as a watermark at 5% opacity. Grain texture overlay. Wide landscape 16:9 format." \
+    "16:9"
+fi
 
 # 5. Hero Image (1200x800, 3:2)
-generate_image "hero.png" \
-  "Create an atmospheric, cinematic hero illustration for the Farcaster Manifesto. A vast dark purple ocean (#1a1233 water) stretching to a distant horizon under a sky transitioning from deep violet (#3d2e6e) at the top to soft lavender (#c4b3e8) at the horizon line. On the horizon, a cluster of small warm white-golden lights grouped together — like a settlement of people who stayed and gathered. The water reflects faint purple light from the sky. Above the settlement, the Farcaster arches symbol (from the reference image) appears subtly in the sky as a constellation made of stars/nodes connected by faint lines, glowing softly in white. Painterly digital art style, contemplative and hopeful mood. No text. Landscape 3:2 format." \
-  "3:2"
+if run_if "hero"; then
+  generate_image "hero.png" \
+    "Create an atmospheric, cinematic hero illustration for the Farcaster Manifesto. A vast dark purple ocean (#1a1233 water) stretching to a distant horizon under a sky transitioning from deep violet (#3d2e6e) at the top to soft lavender (#c4b3e8) at the horizon line. On the horizon, a cluster of small warm white-golden lights grouped together — like a settlement of people who stayed and gathered. The water reflects faint purple light from the sky. Above the settlement, the Farcaster arches symbol (from the reference image) appears subtly in the sky as a constellation made of stars/nodes connected by faint lines, glowing softly in white. Painterly digital art style, contemplative and hopeful mood. No text. Landscape 3:2 format." \
+    "3:2"
+fi
 
 # 6. Screenshot 1 - Hero section (mobile, 9:16)
-generate_image "screenshot1.png" \
-  "Create a realistic mobile app screenshot mockup of the Farcaster Manifesto miniapp hero section. Dark purple gradient background (#7D65C1 base with darker edges). At the top center, the white Farcaster arches logo (from reference image) at about 60px size. Below it, a small pill-shaped badge with thin border reading 'A DOCUMENT FOR THE PEOPLE WHO STAYED' in tiny uppercase letters. Below that, a large headline in white: 'The protocol is ours now.' where 'ours now.' is in extra bold weight 800. Below that, a paragraph of lighter gray text: 'This is not a product manual. It is the truth about what Farcaster is, what happened to it, and why the most important chapter is the one we write together.' Below that, a white rounded button reading 'Read the story'. Clean mobile UI, Inter font, centered layout. Portrait 9:16 format." \
-  "9:16"
+if run_if "screenshot1"; then
+  generate_image "screenshot1.png" \
+    "Create a realistic mobile app screenshot mockup of the Farcaster Manifesto miniapp hero section. Dark purple gradient background (#7D65C1 base with darker edges). At the top center, the white Farcaster arches logo (from reference image) at about 60px size. Below it, a small pill-shaped badge with thin border reading 'A DOCUMENT FOR THE PEOPLE WHO STAYED' in tiny uppercase letters. Below that, a large headline in white: 'The protocol is ours now.' where 'ours now.' is in extra bold weight 800. Below that, a paragraph of lighter gray text: 'This is not a product manual. It is the truth about what Farcaster is, what happened to it, and why the most important chapter is the one we write together.' Below that, a white rounded button reading 'Read the story'. Clean mobile UI, Inter font, centered layout. Portrait 9:16 format." \
+    "9:16"
+fi
 
 # 7. Screenshot 2 - FID section (mobile, 9:16)
-generate_image "screenshot2.png" \
-  "Create a realistic mobile app screenshot of the Farcaster Manifesto miniapp showing the FID identity section. Dark purple background (#1a1233). At the top, small purple uppercase label 'PART IV', followed by a heading in white: 'The most powerful number you will ever own on the internet.' Below that, stacked card components with dark purple semi-transparent backgrounds (rgba(26,18,51,0.7)) and 1px borders. Cards titled: 'Your Name' with description about FID username, 'Your Messages' about signed messages on the network, 'Your Keys' about revocable permissions. Each card has white title and gray description text. Clean, minimal dark theme UI, Inter font. The Farcaster arches appear very faintly as a watermark in the background. Portrait 9:16 format." \
-  "9:16"
+if run_if "screenshot2"; then
+  generate_image "screenshot2.png" \
+    "Create a realistic mobile app screenshot of the Farcaster Manifesto miniapp showing the FID identity section. Dark purple background (#1a1233). At the top, small purple uppercase label 'PART IV', followed by a heading in white: 'The most powerful number you will ever own on the internet.' Below that, stacked card components with dark purple semi-transparent backgrounds (rgba(26,18,51,0.7)) and 1px borders. Cards titled: 'Your Name' with description about FID username, 'Your Messages' about signed messages on the network, 'Your Keys' about revocable permissions. Each card has white title and gray description text. Clean, minimal dark theme UI, Inter font. The Farcaster arches appear very faintly as a watermark in the background. Portrait 9:16 format." \
+    "9:16"
+fi
 
 # 8. Screenshot 3 - Token section (mobile, 9:16)
-generate_image "screenshot3.png" \
-  "Create a realistic mobile app screenshot of the Farcaster Manifesto miniapp showing the token distribution section. Dark purple background (#1a1233). At top, small purple label 'PART VIII', heading: 'The case for \$FARCASTER.' in white. Below, a horizontal stacked bar chart showing token allocation: 35% in light purple (#c4b3e8), 20% in medium purple (#9b85d6), 20% in purple (#7D65C1), 10% in dark purple (#6550a8), 5% in deep purple (#3d2e6e), 10% in near-black (#1a1233). Below the bar, a legend with colored squares and labels: 'Community Retroactive', 'Builder Fund', 'Protocol DAO', 'Liquidity', 'Node Operators', 'Future Contributors'. The Farcaster arches appear very faintly in the background. Clean dark theme UI, Inter font. Portrait 9:16 format." \
-  "9:16"
+if run_if "screenshot3"; then
+  generate_image "screenshot3.png" \
+    "Create a realistic mobile app screenshot of the Farcaster Manifesto miniapp showing the token distribution section. Dark purple background (#1a1233). At top, small purple label 'PART VIII', heading: 'The case for \$FARCASTER.' in white. Below, a horizontal stacked bar chart showing token allocation: 35% in light purple (#c4b3e8), 20% in medium purple (#9b85d6), 20% in purple (#7D65C1), 10% in dark purple (#6550a8), 5% in deep purple (#3d2e6e), 10% in near-black (#1a1233). Below the bar, a legend with colored squares and labels: 'Community Retroactive', 'Builder Fund', 'Protocol DAO', 'Liquidity', 'Node Operators', 'Future Contributors'. The Farcaster arches appear very faintly in the background. Clean dark theme UI, Inter font. Portrait 9:16 format." \
+    "9:16"
+fi
 
 echo "=== All images generated ==="
 ls -la "$IMAGES_DIR"/*.png 2>/dev/null || echo "No PNG files found - check for errors"
