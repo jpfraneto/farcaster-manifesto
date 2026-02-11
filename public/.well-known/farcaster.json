@@ -1,0 +1,38 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjE2MDk4LCJ0eXBlIjoiY3VzdG9keSIsImtleSI6IjB4YUIyMERlOGY1QTRmOGUxNDdCYWFDOUQxZjZlMjM2ODYxNDg1NTE2QSJ9",
+    "payload": "eyJkb21haW4iOiJmYXJjYXN0ZXIubGF0In0",
+    "signature": "RMGs4RD3xES/D8daXNMJIrWTNdYl+Fn9jsuAQ38+VDpjLqtO2q2G1W98efyYGy64RCLt35TDtn/oRUpXSpGO4Rs="
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Farcaster Manifesto",
+    "iconUrl": "https://farcaster.lat/images/icon.png",
+    "homeUrl": "https://farcaster.lat",
+    "imageUrl": "https://farcaster.lat/images/embed.png",
+    "buttonTitle": "Read the Manifesto",
+    "splashImageUrl": "https://farcaster.lat/images/splash.png",
+    "splashBackgroundColor": "#7D65C1",
+    "webhookUrl": "https://farcaster.lat/api/webhook",
+    "subtitle": "The People Who Stayed",
+    "description": "A community manifesto for Farcaster. The truth about what happened, why the protocol survived, and the case for shared ownership. Written by the people who stayed.",
+    "screenshotUrls": [
+      "https://farcaster.lat/images/screenshot1.png",
+      "https://farcaster.lat/images/screenshot2.png",
+      "https://farcaster.lat/images/screenshot3.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "manifesto",
+      "farcaster",
+      "community",
+      "protocol",
+      "governance"
+    ],
+    "heroImageUrl": "https://farcaster.lat/images/hero.png",
+    "tagline": "The protocol is ours now.",
+    "ogTitle": "Farcaster Manifesto — The People Who Stayed",
+    "ogDescription": "A community manifesto for Farcaster. The truth, the survival, and the case for shared ownership.",
+    "ogImageUrl": "https://farcaster.lat/images/og.png"
+  }
+}
