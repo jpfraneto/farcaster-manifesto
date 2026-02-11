@@ -1278,7 +1278,7 @@
         <div class="hero-badge">A document for the people that care</div>
         <h1>What if the protocol was <strong>ours now?</strong></h1>
         <p class="hero-sub">
-          A community powered manifesto for the future of farcaster.
+          Community centered manifesto for the future of farcaster.
         </p>
       </header>
 
@@ -1303,8 +1303,10 @@
 
           <div class="fi">
             <p class="lead">
-              Farcaster is an open social protocol — not a company, not an app — where your identity, posts, and connections are yours forever. Its original founders left and sold control to Neynar, the dominant infrastructure provider, creating a dangerous concentration of power over a system that was meant to belong to everyone. But the protocol survived because the community refused to leave. This manifesto is a call to action: we propose <strong>$FARCASTER</strong>, a community token that gives ownership, governance, and economic stake to the people who actually built this network — rewarding years of contribution, funding future development through a DAO, and ensuring that no single entity can ever again decide the fate of something that belongs to all of us. The protocol is ours now. Let's act like it.
+              Farcaster is an open social protocol — not a company, not an app — where your identity, posts, and connections are yours forever. Its original founders left and sold control to Neynar, the dominant infrastructure provider, creating a dangerous concentration of power over a system that was meant to belong to everyone. 
             </p>
+            <p>This manifesto is a call to action: we propose <strong>$FARCASTER</strong>, a community token that gives ownership, governance, and economic stake to the people who actually built this network — rewarding years of contribution, funding future development through a DAO, and ensuring that no single entity can ever again decide the fate of something that belongs to all of us.</p>
+            <p>What if the protocol was ours? It is time to decentralize farcaster.</p>
           </div>
         </section>
 
@@ -1370,7 +1372,10 @@
           <div class="fi">
             <div class="ch">Part II</div>
             <div class="section-heading">
-              <h2>The last events, and current state of the network:</h2>
+              <h2>
+                The last events, and <strong>current state of the network.</strong>
+              </h2>
+          
               <button class="share-btn" data-section="truth" aria-label="Share this section">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
               </button>
@@ -1797,14 +1802,14 @@
           <div class="fi">
             <p class="lead">
               You don't need to be a blockchain engineer. You need curiosity and
-              something you want to make exist.
+              something you want to create.
             </p>
           </div>
 
           <div class="pathways fi">
             <div class="pathway">
               <div class="pathway-num">01</div>
-              <h4>Create an experience</h4>
+              <h4>Start with the simplest</h4>
               <p>
                 Build a Mini App.
               </p>
@@ -2358,8 +2363,9 @@
 
       <footer>
         <div class="footer-phrase">
-          What if the protocol was ours?<br />Let's make it worthy of the people
-          who believe.
+          
+          <h2>What if the protocol was ours?<br /><strong>Let's make it worthy of the people
+            who believe.</strong></h2>
         </div>
         <div class="footer-links">
           <a href="https://farcaster.xyz" target="_blank" rel="noopener"
@@ -2488,6 +2494,17 @@
             }
           });
         });
+
+        // Scroll to hash on load (anchors from shared links)
+        if (window.location.hash) {
+          const target = document.querySelector(window.location.hash);
+          if (target) {
+            // Small delay so layout settles and fade-ins fire
+            setTimeout(() => {
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 300);
+          }
+        }
 
         // Detect miniapp environment
         const isMiniApp = await sdk.isInMiniApp();
