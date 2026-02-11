@@ -374,7 +374,8 @@
         font-weight: 300;
       }
       /* pandoc compat: .lead as wrapper div instead of p class */
-      p.lead, .lead p {
+      p.lead,
+      .lead p {
         font-size: 1.1rem;
         line-height: 1.9;
         color: var(--w95);
@@ -382,9 +383,19 @@
       }
 
       /* pandoc compat: reset <p> margins inside short-text containers */
-      .ch p, .layer-tag p, .pathway-num p, .g-term p, .g-def p,
-      .token-card-name p, .token-card-pct p, .card .meta p,
-      .raw .raw-sig p, .voice .sig p, .footer-end p { margin: 0; }
+      .ch p,
+      .layer-tag p,
+      .pathway-num p,
+      .g-term p,
+      .g-def p,
+      .token-card-name p,
+      .token-card-pct p,
+      .card .meta p,
+      .raw .raw-sig p,
+      .voice .sig p,
+      .footer-end p {
+        margin: 0;
+      }
 
       /* pandoc compat: token-card-header spans get wrapped in <p> */
       .token-card-header p {
@@ -394,7 +405,6 @@
         margin: 0;
         gap: 1rem;
       }
-
 
       strong {
         color: var(--white);
@@ -1108,15 +1118,33 @@
         opacity: 1;
       }
 
-      .mobile-menu a:nth-child(2) { transition-delay: 0.04s; }
-      .mobile-menu a:nth-child(3) { transition-delay: 0.08s; }
-      .mobile-menu a:nth-child(4) { transition-delay: 0.12s; }
-      .mobile-menu a:nth-child(5) { transition-delay: 0.16s; }
-      .mobile-menu a:nth-child(6) { transition-delay: 0.20s; }
-      .mobile-menu a:nth-child(7) { transition-delay: 0.24s; }
-      .mobile-menu a:nth-child(8) { transition-delay: 0.28s; }
-      .mobile-menu a:nth-child(9) { transition-delay: 0.32s; }
-      .mobile-menu a:nth-child(10) { transition-delay: 0.36s; }
+      .mobile-menu a:nth-child(2) {
+        transition-delay: 0.04s;
+      }
+      .mobile-menu a:nth-child(3) {
+        transition-delay: 0.08s;
+      }
+      .mobile-menu a:nth-child(4) {
+        transition-delay: 0.12s;
+      }
+      .mobile-menu a:nth-child(5) {
+        transition-delay: 0.16s;
+      }
+      .mobile-menu a:nth-child(6) {
+        transition-delay: 0.2s;
+      }
+      .mobile-menu a:nth-child(7) {
+        transition-delay: 0.24s;
+      }
+      .mobile-menu a:nth-child(8) {
+        transition-delay: 0.28s;
+      }
+      .mobile-menu a:nth-child(9) {
+        transition-delay: 0.32s;
+      }
+      .mobile-menu a:nth-child(10) {
+        transition-delay: 0.36s;
+      }
 
       .mobile-menu a:hover,
       .mobile-menu a:active {
@@ -1274,16 +1302,36 @@
       <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-inner">
           <div class="mobile-menu-label">Contents</div>
-          <a href="#tldr" class="mm-link"><span class="mm-num">00</span> TLDR</a>
-          <a href="#farcaster-intro" class="mm-link"><span class="mm-num">I</span> What is this place?</a>
-          <a href="#truth" class="mm-link"><span class="mm-num">II</span> What happened</a>
-          <a href="#stayed" class="mm-link"><span class="mm-num">III</span> We stayed</a>
-          <a href="#fid" class="mm-link"><span class="mm-num">IV</span> The FID</a>
-          <a href="#ocean" class="mm-link"><span class="mm-num">V</span> The ocean</a>
-          <a href="#language" class="mm-link"><span class="mm-num">VI</span> The words</a>
-          <a href="#build" class="mm-link"><span class="mm-num">VII</span> Build</a>
-          <a href="#token" class="mm-link"><span class="mm-num">VIII</span> $$FARCASTER</a>
-          <a href="#epilogue" class="mm-link"><span class="mm-num">✦</span> Epilogue</a>
+          <a href="#tldr" class="mm-link"
+            ><span class="mm-num">00</span> TLDR</a
+          >
+          <a href="#farcaster-intro" class="mm-link"
+            ><span class="mm-num">I</span> What is this place?</a
+          >
+          <a href="#truth" class="mm-link"
+            ><span class="mm-num">II</span> What happened</a
+          >
+          <a href="#stayed" class="mm-link"
+            ><span class="mm-num">III</span> We stayed</a
+          >
+          <a href="#fid" class="mm-link"
+            ><span class="mm-num">IV</span> The FID</a
+          >
+          <a href="#ocean" class="mm-link"
+            ><span class="mm-num">V</span> The ocean</a
+          >
+          <a href="#language" class="mm-link"
+            ><span class="mm-num">VI</span> The words</a
+          >
+          <a href="#build" class="mm-link"
+            ><span class="mm-num">VII</span> Build</a
+          >
+          <a href="#token" class="mm-link"
+            ><span class="mm-num">VIII</span> $$FARCASTER</a
+          >
+          <a href="#epilogue" class="mm-link"
+            ><span class="mm-num">✦</span> Epilogue</a
+          >
         </div>
       </div>
 
@@ -1295,7 +1343,6 @@
           alt="Farcaster"
           class="hero-logo"
         />
-        <div class="hero-badge">A document for the people that care</div>
         <h1>What if the protocol was <strong>ours now?</strong></h1>
         <p class="hero-sub">
           Community centered manifesto for the future of farcaster.
@@ -1305,17 +1352,17 @@
       <!-- Share toast -->
       <div class="share-toast" id="share-toast">Link copied!</div>
 
-      <div class="content" id="farcaster">
-$body$
-      </div>
+      <div class="content" id="farcaster">$body$</div>
 
       <!-- ═══════════ FOOTER ═══════════ -->
 
       <footer>
         <div class="footer-phrase">
-          
-          <h2>What if the protocol was ours?<br /><strong>Let's make it worthy of the people
-            who believe.</strong></h2>
+          <h2>
+            What if the protocol was ours?<br /><strong
+              >Let's make it worthy of the people who believe.</strong
+            >
+          </h2>
         </div>
         <div class="footer-links">
           <a href="https://farcaster.xyz" target="_blank" rel="noopener"
@@ -1412,9 +1459,9 @@ $body$
           });
         });
 
-
         // Auto-inject share buttons into section headings
-        const shareSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>';
+        const shareSvg =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>';
         document.querySelectorAll(".section-heading").forEach((heading) => {
           if (heading.querySelector(".share-btn")) return;
           const section = heading.closest("section");
@@ -1435,18 +1482,28 @@ $body$
           shareToast.textContent = msg;
           shareToast.classList.add("show");
           clearTimeout(toastTimeout);
-          toastTimeout = setTimeout(() => shareToast.classList.remove("show"), 2000);
+          toastTimeout = setTimeout(
+            () => shareToast.classList.remove("show"),
+            2000,
+          );
         }
 
         document.querySelectorAll(".share-btn").forEach((btn) => {
           btn.addEventListener("click", async () => {
             const section = btn.dataset.section;
-            const url = window.location.origin + window.location.pathname + "#" + section;
-            const title = btn.closest(".section-heading").querySelector("h2").textContent.trim();
+            const url =
+              window.location.origin + window.location.pathname + "#" + section;
+            const title = btn
+              .closest(".section-heading")
+              .querySelector("h2")
+              .textContent.trim();
 
             if (navigator.share) {
               try {
-                await navigator.share({ title: "Farcaster Manifesto — " + title, url });
+                await navigator.share({
+                  title: "Farcaster Manifesto — " + title,
+                  url,
+                });
               } catch (e) {
                 if (e.name !== "AbortError") {
                   await navigator.clipboard.writeText(url);
@@ -1490,7 +1547,10 @@ $body$
                 window.open(editUrl, "_blank", "noopener");
               }
             } catch (err) {
-              console.error("Failed to open edit URL via sdk, falling back:", err);
+              console.error(
+                "Failed to open edit URL via sdk, falling back:",
+                err,
+              );
               window.open(editUrl, "_blank", "noopener");
             }
           });
