@@ -991,6 +991,199 @@
         }
       }
 
+      /* ═══ HAMBURGER MENU ═══ */
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 102;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .hamburger span:nth-child(2) {
+        margin: 5px 0;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 101;
+        background: rgba(17, 13, 34, 0.97);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+      }
+
+      .mobile-menu.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-menu-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        width: 100%;
+        max-width: 320px;
+        padding: 0 2rem;
+      }
+
+      .mobile-menu-label {
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--w30);
+        padding: 0 0.8rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .mobile-menu a {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 0.85rem 0.8rem;
+        color: var(--w65);
+        text-decoration: none;
+        border: none;
+        border-radius: 10px;
+        font-size: 0.92rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        transform: translateY(12px);
+        opacity: 0;
+      }
+
+      .mobile-menu.open a {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .mobile-menu a:nth-child(2) { transition-delay: 0.04s; }
+      .mobile-menu a:nth-child(3) { transition-delay: 0.08s; }
+      .mobile-menu a:nth-child(4) { transition-delay: 0.12s; }
+      .mobile-menu a:nth-child(5) { transition-delay: 0.16s; }
+      .mobile-menu a:nth-child(6) { transition-delay: 0.20s; }
+      .mobile-menu a:nth-child(7) { transition-delay: 0.24s; }
+      .mobile-menu a:nth-child(8) { transition-delay: 0.28s; }
+      .mobile-menu a:nth-child(9) { transition-delay: 0.32s; }
+      .mobile-menu a:nth-child(10) { transition-delay: 0.36s; }
+
+      .mobile-menu a:hover,
+      .mobile-menu a:active {
+        background: var(--w08);
+        color: var(--white);
+      }
+
+      .mobile-menu .mm-num {
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--purple-light);
+        min-width: 1.4rem;
+        letter-spacing: 0.04em;
+        opacity: 0.6;
+      }
+
+      /* ═══ SHARE BUTTON ON TITLES ═══ */
+      .section-heading {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .section-heading h2 {
+        flex: 1;
+      }
+
+      .share-btn {
+        flex-shrink: 0;
+        background: none;
+        border: 1px solid var(--w08);
+        border-radius: 8px;
+        padding: 0.45rem;
+        cursor: pointer;
+        color: var(--w30);
+        transition: all 0.3s;
+        margin-top: 0.3rem;
+        position: relative;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .share-btn:hover {
+        color: var(--purple-glow);
+        border-color: var(--w15);
+        background: var(--w04);
+      }
+
+      .share-btn svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      .share-toast {
+        position: fixed;
+        bottom: 4.5rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(10px);
+        background: rgba(26, 18, 51, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--w15);
+        color: var(--white);
+        font-size: 0.78rem;
+        font-weight: 500;
+        padding: 0.55rem 1.2rem;
+        border-radius: 8px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        z-index: 200;
+        white-space: nowrap;
+      }
+
+      .share-toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      @media (max-width: 768px) {
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+        }
+      }
+
       /* ═══ MINIAPP VIEWPORT ═══ */
       @media (max-width: 440px) {
         .hero {
@@ -1044,14 +1237,35 @@
           <span>Farcaster</span>
         </a>
         <ul class="nav-links">
-          <li><a href="#truth">Farcaster?</a></li>
+          <li><a href="#tldr">TLDR</a></li>
           <li><a href="#truth">What happened</a></li>
           <li><a href="#stayed">We Stayed</a></li>
           <li><a href="#fid">The FID</a></li>
           <li><a href="#build">Build</a></li>
           <li><a href="#token">$FARCASTER</a></li>
         </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </nav>
+
+      <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+          <div class="mobile-menu-label">Contents</div>
+          <a href="#tldr" class="mm-link"><span class="mm-num">00</span> TLDR</a>
+          <a href="#farcaster-intro" class="mm-link"><span class="mm-num">I</span> What is this place?</a>
+          <a href="#truth" class="mm-link"><span class="mm-num">II</span> What happened</a>
+          <a href="#stayed" class="mm-link"><span class="mm-num">III</span> We stayed</a>
+          <a href="#fid" class="mm-link"><span class="mm-num">IV</span> The FID</a>
+          <a href="#ocean" class="mm-link"><span class="mm-num">V</span> The ocean</a>
+          <a href="#language" class="mm-link"><span class="mm-num">VI</span> The words</a>
+          <a href="#build" class="mm-link"><span class="mm-num">VII</span> Build</a>
+          <a href="#token" class="mm-link"><span class="mm-num">VIII</span> $FARCASTER</a>
+          <a href="#epilogue" class="mm-link"><span class="mm-num">✦</span> Epilogue</a>
+        </div>
+      </div>
 
       <!-- ═══════════ HERO ═══════════ -->
 
@@ -1068,18 +1282,48 @@
         </p>
       </header>
 
+      <!-- Share toast -->
+      <div class="share-toast" id="share-toast">Link copied!</div>
+
       <div class="content" id="farcaster">
+        <!-- ═══════════ PART 0 — TLDR ═══════════ -->
+
+        <div class="divider"></div>
+
+        <section id="tldr">
+          <div class="fi">
+            <div class="ch">Part 0</div>
+            <div class="section-heading">
+              <h2><strong>TLDR.</strong></h2>
+              <button class="share-btn" data-section="tldr" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="fi">
+            <p class="lead">
+              Farcaster is an open social protocol — not a company, not an app — where your identity, posts, and connections are yours forever. Its original founders left and sold control to Neynar, the dominant infrastructure provider, creating a dangerous concentration of power over a system that was meant to belong to everyone. But the protocol survived because the community refused to leave. This manifesto is a call to action: we propose <strong>$FARCASTER</strong>, a community token that gives ownership, governance, and economic stake to the people who actually built this network — rewarding years of contribution, funding future development through a DAO, and ensuring that no single entity can ever again decide the fate of something that belongs to all of us. The protocol is ours now. Let's act like it.
+            </p>
+          </div>
+        </section>
+
         <!-- ═══════════ PART I — WHAT IS THIS ═══════════ -->
 
         <div class="divider"></div>
 
-        <section>
+        <section id="farcaster-intro">
           <div class="fi">
             <div class="ch">Part I</div>
-            <h2>
-              For anyone arriving for the first time:
-              <strong>what is this place?</strong>
-            </h2>
+            <div class="section-heading">
+              <h2>
+                For anyone arriving for the first time:
+                <strong>what is this place?</strong>
+              </h2>
+              <button class="share-btn" data-section="farcaster-intro" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="fi">
@@ -1125,7 +1369,12 @@
         <section id="truth">
           <div class="fi">
             <div class="ch">Part II</div>
-            <h2>The last events, and current state of the network:</h2>
+            <div class="section-heading">
+              <h2>The last events, and current state of the network:</h2>
+              <button class="share-btn" data-section="truth" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="fi">
@@ -1199,9 +1448,14 @@
         <section id="stayed">
           <div class="fi">
             <div class="ch">Part III</div>
-            <h2>
-              And then we realized our friends <strong>were still here.</strong>
-            </h2>
+            <div class="section-heading">
+              <h2>
+                And then we realized our friends <strong>were still here.</strong>
+              </h2>
+              <button class="share-btn" data-section="stayed" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="fi">
@@ -1260,10 +1514,15 @@
         <section id="fid">
           <div class="fi">
             <div class="ch">Part IV</div>
-            <h2>
-              The most powerful number
-              <strong>you'll ever own on the internet.</strong>
-            </h2>
+            <div class="section-heading">
+              <h2>
+                The most powerful number
+                <strong>you'll ever own on the internet.</strong>
+              </h2>
+              <button class="share-btn" data-section="fid" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="fi">
@@ -1348,10 +1607,15 @@
 
         <!-- ═══════════ PART V — THE OCEAN ═══════════ -->
 
-        <section>
+        <section id="ocean">
           <div class="fi">
             <div class="ch">Part V</div>
-            <h2>The shape of <strong>the ocean.</strong></h2>
+            <div class="section-heading">
+              <h2>The shape of <strong>the ocean.</strong></h2>
+              <button class="share-btn" data-section="ocean" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="fi">
@@ -1449,10 +1713,15 @@
 
         <!-- ═══════════ PART VI — LANGUAGE ═══════════ -->
 
-        <section>
+        <section id="language">
           <div class="fi">
             <div class="ch">Part VI</div>
-            <h2>The words <strong>you'll need.</strong></h2>
+            <div class="section-heading">
+              <h2>The words <strong>you'll need.</strong></h2>
+              <button class="share-btn" data-section="language" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="glossary fi">
@@ -1517,7 +1786,12 @@
         <section id="build" class="section-wide">
           <div class="fi">
             <div class="ch">Part VII</div>
-            <h2>Choose <strong>your voyage and build.</strong></h2>
+            <div class="section-heading">
+              <h2>Choose <strong>your voyage and build.</strong></h2>
+              <button class="share-btn" data-section="build" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="fi">
@@ -1598,7 +1872,12 @@
         <section id="token">
           <div class="fi">
             <div class="ch">Part VIII</div>
-            <h2>The case for <strong>$FARCASTER.</strong></h2>
+            <div class="section-heading">
+              <h2>The case for <strong>$FARCASTER.</strong></h2>
+              <button class="share-btn" data-section="token" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="fi">
@@ -2041,10 +2320,15 @@
 
         <!-- ═══════════ EPILOGUE ═══════════ -->
 
-        <section>
+        <section id="epilogue">
           <div class="fi">
             <div class="ch">Epilogue</div>
-            <h2>This document is <strong>a beginning.</strong></h2>
+            <div class="section-heading">
+              <h2>This document is <strong>a beginning.</strong></h2>
+              <button class="share-btn" data-section="epilogue" aria-label="Share this section">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+              </button>
+            </div>
           </div>
 
           <div class="fi">
@@ -2153,6 +2437,57 @@
         window.addEventListener("scroll", () =>
           nav.classList.toggle("scrolled", window.scrollY > 60),
         );
+
+        // Hamburger menu
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        hamburger.addEventListener("click", () => {
+          const isOpen = hamburger.classList.toggle("open");
+          mobileMenu.classList.toggle("open", isOpen);
+          document.body.style.overflow = isOpen ? "hidden" : "";
+        });
+
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            hamburger.classList.remove("open");
+            mobileMenu.classList.remove("open");
+            document.body.style.overflow = "";
+          });
+        });
+
+        // Share buttons
+        const shareToast = document.getElementById("share-toast");
+        let toastTimeout;
+
+        function showToast(msg) {
+          shareToast.textContent = msg;
+          shareToast.classList.add("show");
+          clearTimeout(toastTimeout);
+          toastTimeout = setTimeout(() => shareToast.classList.remove("show"), 2000);
+        }
+
+        document.querySelectorAll(".share-btn").forEach((btn) => {
+          btn.addEventListener("click", async () => {
+            const section = btn.dataset.section;
+            const url = window.location.origin + window.location.pathname + "#" + section;
+            const title = btn.closest(".section-heading").querySelector("h2").textContent.trim();
+
+            if (navigator.share) {
+              try {
+                await navigator.share({ title: "Farcaster Manifesto — " + title, url });
+              } catch (e) {
+                if (e.name !== "AbortError") {
+                  await navigator.clipboard.writeText(url);
+                  showToast("Link copied!");
+                }
+              }
+            } else {
+              await navigator.clipboard.writeText(url);
+              showToast("Link copied!");
+            }
+          });
+        });
 
         // Detect miniapp environment
         const isMiniApp = await sdk.isInMiniApp();
