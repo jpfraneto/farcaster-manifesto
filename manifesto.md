@@ -13,7 +13,9 @@ Part 0
 :::
 
 ::: section-heading
+
 ## **TLDR.**
+
 :::
 :::::
 
@@ -38,7 +40,9 @@ Part I
 :::
 
 ::: section-heading
+
 ## For anyone arriving for the first time: **what is this place?**
+
 :::
 :::::
 
@@ -69,12 +73,14 @@ Part II
 :::
 
 ::: section-heading
+
 ## The last events, and **current state of the network.**
+
 :::
 :::::
 
 ::: fi
-For over four years, thousands of people poured their energy, creativity, time, and belief into this protocol. They wrote casts. Shared memes. Deployed clankers. Developers built hundreds of Frames, Mini Apps, bots, and novel systems. Artists created and shared their craft. Writers wrote. Novel products spawned. Communities formed. People made *friends*. Conferences were held and they were magical.
+For over four years, thousands of people poured their energy, creativity, time, and belief into this protocol. They wrote casts. Shared memes. Deployed clankers. Developers built hundreds of Frames, Mini Apps, bots, and novel systems. Artists created and shared their craft. Writers wrote. Novel products spawned. Communities formed. People made _friends_. Conferences were held and they were magical.
 
 More importantly: people built **reputation.**. Meaningful and unruggable connections. Not only followers. Not clout. The slow, honest accumulation of trust that comes from showing up day after day, connecting, creating things that matter, helping strangers, pushing boundaries.
 
@@ -88,7 +94,7 @@ This is not decentralization --- it is a consolidation of power dressed in the l
 
 And the founders who orchestrated this? They didn\'t disappear into obscurity. They are still here --- posting, casting, engaging. **They are users now, just like everyone else.** No special governance rights. No protocol authority. Just FIDs in a sea of FIDs. The people who built the lighthouse and then handed the keys to a toll booth operator are now walking the same docks as everyone else, pretending the hand-off was a gift.
 
-This creates incentives that should alarm anyone paying attention. When the infrastructure provider *is* the protocol steward, what happens when their business interests diverge from the community\'s needs? When raising API prices funds protocol development, who does the protocol really serve? The answer is obvious. And it is not you.
+This creates incentives that should alarm anyone paying attention. When the infrastructure provider _is_ the protocol steward, what happens when their business interests diverge from the community\'s needs? When raising API prices funds protocol development, who does the protocol really serve? The answer is obvious. And it is not you.
 
 There was no network token. No concrete medium of belonging. No way for the people who built this world to own a piece of it. The community held nothing but trust. And then trust was broken --- not once, but twice. First by the departure. Then by the terms of the hand-off.
 
@@ -106,13 +112,15 @@ Part III
 :::
 
 ::: section-heading
+
 ## And then we realized our friends **were still here.**
+
 :::
 :::::
 
 :::: fi
 ::: lead
-*What the fuck do we do with this now?* --- the people who believed in a different future asked each other. They walked the empty streets, puzzled. They casted to the void. Hoping for remembrances of what had happened here before.
+_What the fuck do we do with this now?_ --- the people who believed in a different future asked each other. They walked the empty streets, puzzled. They casted to the void. Hoping for remembrances of what had happened here before.
 :::
 ::::
 
@@ -149,13 +157,15 @@ Part IV
 :::
 
 ::: section-heading
+
 ## The most powerful number **you\'ll ever own on the internet.**
+
 :::
 :::::
 
 :::: fi
 ::: lead
-At the heart of everything is a **FID** --- a Farcaster ID. A number registered on-chain, linked to your Ethereum address, owned by you. Not rented. *Owned.*
+At the heart of everything is a **FID** --- a Farcaster ID. A number registered on-chain, linked to your Ethereum address, owned by you. Not rented. _Owned._
 :::
 ::::
 
@@ -169,30 +179,35 @@ Your FID works in **every** app built on Farcaster. If Warpcast disappears tomor
 
 :::::::: {.cards .fi}
 ::: card
+
 #### Your Name
 
 A username like \@alice that maps to your FID. A Farcaster name you can claim, or bring your own ENS name (.eth) for permanent, censorship-resistant naming.
 :::
 
 ::: card
+
 #### Your Messages
 
 Every cast, reaction, follow, and profile update is a signed message on the network. Five types: Casts, Reactions, Links, Profile Data, Wallet Verifications.
 :::
 
 ::: card
+
 #### Your Keys
 
 Apps get revocable permissions, not your identity. You grant keys. You revoke keys. No app ever touches your master identity.
 :::
 
 ::: card
+
 #### Your Graph
 
 Follows are signed messages on the protocol, not hidden database rows. Your social graph is public, portable, verifiable --- it travels with you.
 :::
 
 ::: card
+
 #### Your Proof
 
 Connect wallets, verify across chains, link ENS. On-chain proofs of who you are, anchored to the most secure networks humanity has built.
@@ -214,7 +229,9 @@ Part V
 :::
 
 ::: section-heading
+
 ## The shape of **the ocean.**
+
 :::
 :::::
 
@@ -229,7 +246,7 @@ Two layers. **Optimism** --- the blockchain where permanent facts live: who you 
 
 Above them, **Neynar** provides developer infrastructure --- APIs, SDKs, webhooks. And above that, **Warpcast** and other clients give people a way to interact without thinking about any of it.
 
-Here is the uncomfortable truth about this architecture: **Neynar now occupies THREE roles simultaneously.** They are the dominant infrastructure provider that developers pay to access the protocol, they are in charge of maintaining the main client, *and* they are the stewards of the protocol itself.
+Here is the uncomfortable truth about this architecture: **Neynar now occupies THREE roles simultaneously.** They are the dominant infrastructure provider that developers pay to access the protocol, they are in charge of maintaining the main client, _and_ they are the stewards of the protocol itself.
 
 The entity that profits from the current layer sits above the bedrock and below the surface --- controlling the current that connects everything. This is a structural conflict of interest that the community must understand and address.
 :::
@@ -241,6 +258,7 @@ Surface
 :::
 
 ::: layer-body
+
 #### Clients
 
 Warpcast, Supercast, others. Different lenses into the same open world.
@@ -253,6 +271,7 @@ Shallow
 :::
 
 ::: layer-body
+
 #### Mini Apps
 
 Interactive apps inside any client. Games, tools, commerce --- with wallet access and notifications.
@@ -265,6 +284,7 @@ Current
 :::
 
 ::: layer-body
+
 #### Neynar APIs
 
 REST, SDKs, webhooks, managed signers. The bridge between raw protocol and working applications. Now also the protocol\'s steward --- a dual role worth scrutinizing.
@@ -277,6 +297,7 @@ Deep
 :::
 
 ::: layer-body
+
 #### Snapchain
 
 Decentralized message network. Byzantine-fault-tolerant. 9,000+ TPS. The living memory.
@@ -289,6 +310,7 @@ Bedrock
 :::
 
 ::: layer-body
+
 #### On-Chain Contracts
 
 Identity, keys, storage --- etched into Optimism. The ground truth that survives everything.
@@ -307,7 +329,9 @@ Part VI
 :::
 
 ::: section-heading
+
 ## The words **you\'ll need.**
+
 :::
 :::::
 
@@ -388,7 +412,9 @@ Part VII
 :::
 
 ::: section-heading
+
 ## Choose **your voyage and build.**
+
 :::
 :::::
 
@@ -408,7 +434,7 @@ You don\'t need to be a blockchain engineer. You need curiosity and something yo
 
 Build a Mini App.
 
-[Mini Apps Docs →](https://miniapps.farcaster.xyz){.plink target="_blank" rel="noopener"}
+[Mini Apps Docs →](https://miniapps.farcaster.xyz){.plink target="\_blank" rel="noopener"}
 ::::
 
 :::: pathway
@@ -420,7 +446,7 @@ Build a Mini App.
 
 Neynar APIs: feeds, search, bots, AI agents. Three lines to fetch any feed on the network.
 
-[Neynar Docs →](https://docs.neynar.com){.plink target="_blank" rel="noopener"}
+[Neynar Docs →](https://docs.neynar.com){.plink target="\_blank" rel="noopener"}
 ::::
 
 :::: pathway
@@ -432,7 +458,7 @@ Neynar APIs: feeds, search, bots, AI agents. Three lines to fetch any feed on th
 
 Talk to Snapchain directly. Run a node. Replicate to Postgres. Query everything.
 
-[Snapchain Docs →](https://snapchain.farcaster.xyz){.plink target="_blank" rel="noopener"}
+[Snapchain Docs →](https://snapchain.farcaster.xyz){.plink target="\_blank" rel="noopener"}
 ::::
 
 :::: pathway
@@ -444,7 +470,7 @@ Talk to Snapchain directly. Run a node. Replicate to Postgres. Query everything.
 
 Smart contracts. Identity mechanics. Contribute through FIPs.
 
-[Protocol Docs →](https://docs.farcaster.xyz){.plink target="_blank" rel="noopener"}
+[Protocol Docs →](https://docs.farcaster.xyz){.plink target="\_blank" rel="noopener"}
 ::::
 :::::::::::
 :::::::::::::::::
@@ -459,7 +485,9 @@ Part VIII
 :::
 
 ::: section-heading
+
 ## The case for **\$FARCASTER.**
+
 :::
 :::::
 
@@ -470,6 +498,7 @@ A protocol without a token is a nation without a currency. People can live there
 ::::
 
 ::: fi
+
 ### Why the token is necessary
 
 The recent events made one thing devastatingly clear: **reputation without stake is a sandcastle at high tide.** Thousands of people invested years of creative energy into Farcaster. They built its culture, its tools, its soul. And when the leadership departed, those people had nothing. No ownership. No governance rights. No economic claim on the world they built. Just the memory of what it felt like to believe.
@@ -482,7 +511,7 @@ Without a token, Farcaster faces three existential problems:
 
 **2. The governance vacuum.** Who decides the future of the protocol? Right now the answer is unclear. A token creates a concrete mechanism: the people who hold it govern it. The more skin you have in the game, the more your voice matters. Not perfectly fair --- but infinitely better than a small team making decisions behind closed doors and then vanishing.
 
-**3. The belonging gap.** The FID is the most powerful identity primitive on the internet. But identity without economic participation is citizenship without a vote. A token turns passive users into active stakeholders. It transforms \"I use this\" into \"I *own* this.\"
+**3. The belonging gap.** The FID is the most powerful identity primitive on the internet. But identity without economic participation is citizenship without a vote. A token turns passive users into active stakeholders. It transforms \"I use this\" into \"I _own_ this.\"
 
 ### What \$FARCASTER should be
 
@@ -502,6 +531,7 @@ The token should serve five functions:
 :::
 
 ::: fi
+
 ### Proposed supply and distribution
 
 Total supply: **10,000,000,000 \$FARCASTER** (10 billion). Fixed supply. Fair launched via clanker. No inflation beyond the initial allocation. All vesting is on-chain and verifiable.
@@ -602,6 +632,7 @@ Total supply: **10,000,000,000 \$FARCASTER** (10 billion). Fixed supply. Fair la
 :::::::::::::::::::::
 
 ::: fi
+
 ### What is deliberately absent
 
 **No founder allocation.** The founders left. They returned investor money. They made their exit. The token is for the people who stayed. This is not punitive --- it is structural. The token represents future ownership, and its purpose is to reward future builders and retroactive contributors, not past equity holders who already chose their exit.
@@ -619,6 +650,7 @@ Every criterion must be on-chain verifiable. No subjective panels. No \"core tea
 
 ::::::::::::: {.cards .fi}
 :::: card
+
 #### FID Age
 
 When was your FID minted? The earliest believers --- the people who showed up before there was anything to show up for --- receive the highest multiplier. Logarithmic decay: FID #50 and FID #500 are both early; FID #500,000 is not.
@@ -629,6 +661,7 @@ Source: IdRegistry contract on Optimism · Immutable · On-chain
 ::::
 
 :::: card
+
 #### Message Volume
 
 Total signed messages on Snapchain: casts, reactions, links, profile updates. Not raw count --- weighted by message type and uniqueness. Original casts count more than reactions. Replies to others count more than standalone posts. This rewards conversation, not spam.
@@ -639,6 +672,7 @@ Source: Snapchain message history · Verifiable by any node operator
 ::::
 
 :::: card
+
 #### Graph Depth
 
 Not \"how many followers\" --- how deeply embedded in the network. Measured by bidirectional follows, reply threads, reaction diversity. A FID followed by 100 unique active users who also interact with their casts scores higher than a FID followed by 10,000 dormant accounts.
@@ -649,6 +683,7 @@ Source: Link messages on Snapchain · Reaction patterns · Sybil-resistant by de
 ::::
 
 :::: card
+
 #### Storage Commitment
 
 How many storage units have you rented, and for how long? Storage rent is the only direct economic commitment users make to the protocol today. It proves sustained, concrete belief.
@@ -659,6 +694,7 @@ Source: StorageRegistry contract on Optimism · On-chain payment history
 ::::
 
 :::: card
+
 #### Builder Activity
 
 For the Builder Fund specifically: app keys registered in KeyRegistry, Mini Apps deployed, contracts interacting with Farcaster primitives, verifiable API usage through Neynar. If you shipped something the network used, the network pays you back.
@@ -670,15 +706,16 @@ Source: KeyRegistry · Snapchain app key registrations · Mini App manifest regi
 :::::::::::::
 
 ::: fi
+
 ### The philosophical argument
 
-Every great protocol moment in history has been a moment of distribution. Bitcoin\'s genesis block. Ethereum\'s crowdsale. Uniswap\'s airdrop to every wallet that ever used the protocol. These were not financial events --- they were **acts of recognition**. The network saying to its earliest participants: *you built this. This is yours.*
+Every great protocol moment in history has been a moment of distribution. Bitcoin\'s genesis block. Ethereum\'s crowdsale. Uniswap\'s airdrop to every wallet that ever used the protocol. These were not financial events --- they were **acts of recognition**. The network saying to its earliest participants: _you built this. This is yours._
 
 Farcaster missed that moment. The leadership chose a different path --- venture funding, corporate structure, controlled development. That path ended when the leadership departed and returned the money. The venture model failed this network. It failed the builders, the creators, the dreamers who gave years of their lives to something they believed in.
 
-\$FARCASTER is the correction. Not a bailout. Not a consolation prize. A structural redesign. The moment where this protocol stops being something people *use* and becomes something people *own*.
+\$FARCASTER is the correction. Not a bailout. Not a consolation prize. A structural redesign. The moment where this protocol stops being something people _use_ and becomes something people _own_.
 
-Because ownership changes everything. When you own a piece of the network, you don\'t just build on it --- you build *for* it. Every Mini App you ship, every cast you write, every friend you bring --- it isn\'t just activity. It\'s an investment in something that\'s yours. The incentives align. The energy compounds. The flywheel turns.
+Because ownership changes everything. When you own a piece of the network, you don\'t just build on it --- you build _for_ it. Every Mini App you ship, every cast you write, every friend you bring --- it isn\'t just activity. It\'s an investment in something that\'s yours. The incentives align. The energy compounds. The flywheel turns.
 
 And the people who stayed through the worst of it --- who watched the founders leave, who picked up the pieces, who kept building when there was no rational reason to --- those people deserve to be first in line.
 :::
@@ -688,6 +725,7 @@ A network token is not about price. It is about **alignment**. It is the differe
 :::
 
 ::: fi
+
 ### The path forward
 
 This proposal is a starting point, not a decree. The exact parameters --- total supply, allocation percentages, vesting schedules, distribution formulas --- should be debated, refined, and ultimately ratified by the community through a governance process. What matters is the principle:
@@ -710,14 +748,16 @@ Epilogue
 :::
 
 ::: section-heading
+
 ## This document is **a beginning.**
+
 :::
 :::::
 
 ::: fi
-If you\'re reading this and you\'ve never heard of Farcaster --- welcome. You\'re arriving at the exact right moment. The foundation is solid. The contracts are on-chain. The network runs. The tools exist. And for the first time, the community is free to shape this into what it was always meant to be.
+If you\'re reading this and you\'ve never heard of Farcaster --- welcome. You\'re arriving at the exact right moment. The foundation is solid. The contracts are on-chain. The network runs. The tools exist. And for the first time, the community could shape this into what it was always meant to be.
 
-**Claim your FID.** It is the most important thing you will ever own on the internet. It is your passport to a world being built right now, by people who refused to accept that the way things are is the way things have to be.
+**Claim your FID.** It is your passport to a world being built right now, by people who refused to accept that the way things are is the way things have to be.
 :::
 
 ::: {.voice .fi}
