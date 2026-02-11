@@ -70,6 +70,7 @@
         scroll-behavior: smooth;
         scrollbar-width: thin;
         scrollbar-color: var(--purple-mid) var(--purple-dark);
+        overflow-x: hidden;
       }
 
       body {
@@ -191,8 +192,8 @@
         top: 18%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 480px;
-        height: 480px;
+        width: min(480px, 100vw);
+        height: min(480px, 100vw);
         background: radial-gradient(
           circle,
           rgba(155, 133, 214, 0.12) 0%,
