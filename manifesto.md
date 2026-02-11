@@ -138,15 +138,6 @@ This document is part of that movement. This is a new way of talking about Farca
 Farcaster today doesn\'t look different from X or threads or other social media platforms to an outsider. The ethos doesn\'t shine through yet. **That is what this document is the beginning of changing.**
 :::
 
-::: {.voice .fi}
-And then they realized that their friends were still here.
-
-And a movement started.
-
-And it was **fucking glorious.**
-:::
-:::::::::::
-
 ::: divider
 :::
 
@@ -158,7 +149,7 @@ Part IV
 
 ::: section-heading
 
-## The most powerful number **you\'ll ever own on the internet.**
+## Your identity on the new internet
 
 :::
 :::::
