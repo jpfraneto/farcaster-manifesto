@@ -8,4 +8,4 @@ deploy:
 	git add -A
 	git commit -m "deploy: update manifesto"
 	git push origin main
-	orbiter update $(SITE) $(DEPLOY_DIR)/
+	orbiter update $(DEPLOY_DIR) -d $(SITE)
