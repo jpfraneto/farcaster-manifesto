@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-IMAGES_DIR="/Users/kithkui/Desktop/client_work/farcaster/manifesto/public/images"
-ARCHES="$IMAGES_DIR/farcaster-arches.jpg"
+IMAGES_DIR="$(cd "$(dirname "$0")" && pwd)/deploy/images"
+ARCHES="$IMAGES_DIR/farcaster-logo.jpg"
 MODEL="gemini-2.5-flash-image"
 API_URL="https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent"
 
