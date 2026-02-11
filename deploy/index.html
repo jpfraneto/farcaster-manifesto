@@ -2405,7 +2405,7 @@
       <!-- Share & Add App buttons (miniapp only) -->
 
       <!-- Sticky edit bar -->
-      <div class="edit-bar">
+      <div class="edit-bar" id="edit-bar">
         <span>This is a living and co-created document.</span>
         <a
           href="https://github.com/jpfraneto/farcaster-manifesto/edit/main/index.html"
@@ -2508,6 +2508,28 @@
 
         // Detect miniapp environment
         const isMiniApp = await sdk.isInMiniApp();
+
+        // Edit bar: open GitHub edit URL using Farcaster miniapp SDK when available,
+        // otherwise fall back to a normal browser tab.
+        const editBar = document.getElementById("edit-bar");
+        if (editBar) {
+          const editUrl =
+            "https://github.com/jpfraneto/farcaster-manifesto/edit/main/index.html";
+
+          editBar.addEventListener("click", async (event) => {
+            event.preventDefault();
+            try {
+              if (isMiniApp) {
+                await sdk.actions.openUrl({ url: editUrl });
+              } else {
+                window.open(editUrl, "_blank", "noopener");
+              }
+            } catch (err) {
+              console.error("Failed to open edit URL via sdk, falling back:", err);
+              window.open(editUrl, "_blank", "noopener");
+            }
+          });
+        }
 
         if (isMiniApp) {
           // Signal ready immediately — hides splash screen
