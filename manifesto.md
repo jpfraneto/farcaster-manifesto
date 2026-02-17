@@ -96,9 +96,7 @@ And the founders who orchestrated this? They didn\'t disappear into obscurity. T
 
 This creates incentives that should alarm anyone paying attention. When the infrastructure provider _is_ the protocol steward, what happens when their business interests diverge from the community\'s needs? When raising API prices funds protocol development, who does the protocol really serve? The answer is obvious. And it is not you.
 
-There was no network token. No concrete medium of belonging. No way for the people who built this world to own a piece of it. The community held nothing but trust. And then trust was broken --- not once, but twice. First by the departure. Then by the terms of the hand-off.
-
-Leaving us with empty hands and a broken spirit.
+There was no network token. No concrete medium of belonging. No way for the people who co-created this world to own a piece of it.
 :::
 :::::::
 
